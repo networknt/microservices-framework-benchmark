@@ -1,4 +1,4 @@
-Here is the undertow-server performance
+Here is the light-java server performance
 
 ```
 steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
@@ -38,6 +38,6 @@ Transfer/sec:      3.98MB
 
 ```
 
-Basically, undertow-server is 44 times faster then sprint-boot just for the raw performance to serve Hello World!
+Basically, light-java is 44 times faster then sprint-boot just for the raw performance to serve Hello World!
 
 

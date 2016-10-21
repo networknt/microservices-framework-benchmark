@@ -8,8 +8,8 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.swagger</groupId>
-  <artifactId>swagger-undertow-server</artifactId>
-  <name>swagger-undertow-server</name>
+  <artifactId>swagger-light-java</artifactId>
+  <name>swagger-light-java</name>
   <version>1.0.0</version>
   <prerequisites>
     <maven>2.2.0</maven>
