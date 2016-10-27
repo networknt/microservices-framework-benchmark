@@ -1,4 +1,4 @@
-Here is the light-java server performance
+Here is the light-java server performance with 320MB memory usage.
 
 ```
 steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
@@ -18,7 +18,7 @@ Transfer/sec:    147.31MB
 
 ```
 
-Here is the spring-boot performance
+Here is the spring-boot performance with 1.51GB memory usage.
 
 ```
 steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
