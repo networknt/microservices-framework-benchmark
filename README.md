@@ -68,6 +68,15 @@ performance is getting a little better. Light-Java is about 33 times faster than
 Upon requests from the community, I have added nodejs and golang examples and here are the testing result.
 
 Node express framework.
+To start the server
+
+```
+cd node-express
+npm install
+node server.js
+
+```
+The test result.
 
 ```
 steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
@@ -87,3 +96,59 @@ Transfer/sec:      9.31MB
 
 ```
 
+Go Standard Http
+
+To start the server
+```
+cd go-http
+go run server.go -prefork
+```
+
+The testing result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.01ms   15.35ms 180.11ms   87.10%
+    Req/Sec    42.80k     5.46k   62.49k    70.58%
+  Latency Distribution
+     50%   10.03ms
+     75%   19.96ms
+     90%   34.55ms
+     99%   72.99ms
+  5123194 requests in 30.08s, 630.28MB read
+Requests/sec: 170313.02
+Transfer/sec:     20.95MB
+
+```
+
+Go FastHttp
+
+To start the server
+
+```
+cd go-fasthttp
+go run server.go -prefork
+
+```
+The testing result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    99.98ms  127.12ms 653.72ms   82.12%
+    Req/Sec   351.24k    46.23k  525.74k    77.09%
+  Latency Distribution
+     50%   30.76ms
+     75%  175.44ms
+     90%  299.14ms
+     99%  476.20ms
+  41989168 requests in 30.06s, 4.93GB read
+Requests/sec: 1396685.83
+Transfer/sec:    167.83MB
+
+```
