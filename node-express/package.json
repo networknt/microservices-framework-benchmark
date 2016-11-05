@@ -1,0 +1,12 @@
+{
+  "name": "express",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.14.0",
+    "body-parser": "1.15.2",
+    "method-override": "2.3.6",
+    "errorhandler": "1.4.3",
+    "async": "1.5.2"
+  }
+}

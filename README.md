@@ -1,4 +1,4 @@
-Here is the light-java server performance with 320MB memory usage.
+Here is the light-java server performance.
 
 ```
 steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
@@ -18,7 +18,7 @@ Transfer/sec:    147.31MB
 
 ```
 
-Here is the spring-boot (tomcat embedded) performance.
+Here is the spring-boot-tomcat (tomcat embedded) performance.
 
 ```
 steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
@@ -38,31 +38,52 @@ Transfer/sec:      3.98MB
 
 ```
 
-Here is the spring-boot (undertow embedded) performance with 1.54GB memory usage.
+Here is the spring-boot-undertow (undertow embedded) performance.
 
 ```
-Safeers-MBP:~ stevehu$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    11.53ms    6.84ms 127.31ms   64.48%
-    Req/Sec    26.45k     1.50k   32.80k    70.42%
+    Latency    38.94ms   39.29ms 456.82ms   89.28%
+    Req/Sec    11.21k     4.97k   28.16k    68.14%
   Latency Distribution
-     50%   10.94ms
-     75%   16.49ms
-     90%   21.93ms
-     99%    0.00us
-  3165728 requests in 30.09s, 458.90MB read
-Requests/sec: 105225.64
-Transfer/sec:     15.25MB
+     50%   27.58ms
+     75%   49.62ms
+     90%   80.73ms
+     99%  201.87ms
+  1331312 requests in 30.08s, 192.98MB read
+Requests/sec:  44260.61
+Transfer/sec:      6.42MB
 ```
 
-Basically, light-java is 44 times faster then sprint-boot with tomcat just 
+Basically, light-java is 44 times faster then sprint-boot with tomcat embedded just
 for the raw performance to serve Hello World! 
 
-In order to have a closer comparison, I have switched to spring-boot with embedded
+In order to have a closer comparison, I have created another project spring-boot-undertow with embedded
 undertow servlet container (light-java is using undertow core only) and the 
-performance is getting much better. Note the test on spring-boot(undertow) is done
-on my Mac Book Pro.
+performance is getting a little better. Light-Java is about 33 times faster than spring-boot with undertow embedded.
 
+
+Upon requests from the community, I have added nodejs and golang examples and here are the testing result.
+
+Node express framework.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.30ms   24.35ms 592.24ms   49.18%
+    Req/Sec    10.70k     0.87k   11.95k    94.82%
+  Latency Distribution
+     50%   47.94ms
+     75%    0.00us
+     90%    0.00us
+     99%    0.00us
+  1274289 requests in 30.02s, 279.51MB read
+Requests/sec:  42443.34
+Transfer/sec:      9.31MB
+
+```
 
