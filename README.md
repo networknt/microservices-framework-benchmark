@@ -152,3 +152,27 @@ Requests/sec: 1396685.83
 Transfer/sec:    167.83MB
 
 ```
+
+After I post this online, one of spring developers recommended to test against Spring Boot with Reactor
+which is Netty based without servlet container. I am very new to this and might miss something and everyone
+is welcomed to submit pull request to enhance this project.
+
+Here is the test result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:3000 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:3000
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.44ms   12.88ms 285.71ms   94.23%
+    Req/Sec    61.44k    12.25k   88.29k    79.23%
+  Latency Distribution
+     50%    4.62ms
+     75%    8.11ms
+     90%   15.03ms
+     99%   42.60ms
+  7305649 requests in 30.03s, 536.48MB read
+Requests/sec: 243240.17
+Transfer/sec:     17.86MB
+
+```

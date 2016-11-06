@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.1.10.RELEASE</version>
+    </parent>
+
+    <groupId>org.projectreactor.examples</groupId>
+    <artifactId>gs-reactor-hello</artifactId>
+    <version>0.1.0</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <reactor.version>1.1.0.M3</reactor.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Reactor -->
+        <dependency>
+            <groupId>org.projectreactor</groupId>
+            <artifactId>reactor-net</artifactId>
+            <version>${reactor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectreactor.spring</groupId>
+            <artifactId>reactor-spring-context</artifactId>
+            <version>${reactor.version}</version>
+        </dependency>
+
+        <!-- GraphicsMagick -->
+        <dependency>
+            <groupId>com.sharneng</groupId>
+            <artifactId>gm4java</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
