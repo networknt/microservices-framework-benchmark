@@ -176,3 +176,23 @@ Requests/sec: 243240.17
 Transfer/sec:     17.86MB
 
 ```
+
+Add Spark test case and here is the result. It is much better then most frameworks with servlet containers.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:4567 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:4567
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.85ms   30.58ms 687.89ms   96.29%
+    Req/Sec    49.10k    16.55k  107.63k    73.41%
+  Latency Distribution
+     50%    7.28ms
+     75%   13.96ms
+     90%   24.71ms
+     99%  158.21ms
+  5855187 requests in 30.10s, 0.95GB read
+Requests/sec: 194553.83
+Transfer/sec:     32.47MB
+
+```
