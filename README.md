@@ -1,3 +1,17 @@
+
+| Framework    | Max Throughput | Avg Latency | Transfer | 
+| ------------ | -------------- | ----------- | -------- |
+| Light Java   | 1457258        | 2.46ms      | 141.31MB |
+| Go FastHttp  | 1396686        | 99.98ms     | 167.83MB |
+| Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
+| Spark        | 194553.83      |  13.85ms    | 32.47MB  |
+| Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
+| Jooby        | 120232.86      |  15.57ms    | 13.07MB  |
+| Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
+| Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
+| Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
+
+
 Here is the light-java server performance.
 
 ```
@@ -194,5 +208,25 @@ Running 30s test @ http://localhost:4567
   5855187 requests in 30.10s, 0.95GB read
 Requests/sec: 194553.83
 Transfer/sec:     32.47MB
+
+```
+
+Add Jooby test case and here is the result. It is better than Spring Boot as it is using Netty directly. 
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.57ms   25.97ms 431.00ms   94.64%
+    Req/Sec    30.50k     8.66k   77.57k    75.68%
+  Latency Distribution
+     50%    9.93ms
+     75%   16.49ms
+     90%   27.27ms
+     99%  123.80ms
+  3613008 requests in 30.05s, 392.80MB read
+Requests/sec: 120232.86
+Transfer/sec:     13.07MB
 
 ```
