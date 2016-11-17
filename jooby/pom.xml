@@ -28,7 +28,7 @@
     <!-- Server -->
     <dependency>
       <groupId>org.jooby</groupId>
-      <artifactId>jooby-netty</artifactId>
+      <artifactId>jooby-undertow</artifactId>
     </dependency>
 
     <!-- Tests -->

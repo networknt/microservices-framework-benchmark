@@ -8,7 +8,7 @@ import org.jooby.Jooby;
 public class App extends Jooby {
 
   {
-    get("/", () -> "Hello World!");
+    get("/", (req, rsp) -> rsp.send("Hello World!"));
   }
 
   public static void main(final String[] args) {
