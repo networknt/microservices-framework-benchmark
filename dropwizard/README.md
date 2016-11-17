@@ -7,5 +7,5 @@ mvn clean package
 to run:
 
 ```
-java -jar target/dropwizard-simple.jar server
+java -jar target/dropwizard-simple.jar server nologging.yml
 ```
