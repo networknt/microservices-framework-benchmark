@@ -6,7 +6,7 @@
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
-| Jooby        | 120232.86      |  15.57ms    | 13.07MB  |
+| Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
@@ -230,3 +230,24 @@ Requests/sec: 120232.86
 Transfer/sec:     13.07MB
 
 ```
+
+@jknack submitted a pull request for Jooby to switch to Undertow instead of Netty and here is the updated result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.22ms   20.07ms 439.26ms   94.77%
+    Req/Sec    32.96k     7.71k   52.00k    78.38%
+  Latency Distribution
+     50%    9.06ms
+     75%   14.98ms
+     90%   23.88ms
+     99%   89.30ms
+  3926256 requests in 30.10s, 565.40MB read
+Requests/sec: 130458.14
+Transfer/sec:     18.79MB
+
+```
+
