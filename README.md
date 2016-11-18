@@ -9,6 +9,7 @@
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
+| Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -254,3 +255,22 @@ Transfer/sec:     18.79MB
 
 ```
 
+@windbender submitted a pull request for Dropwizard and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    98.78ms  167.67ms   1.92s    92.91%
+    Req/Sec     8.58k     4.26k   24.02k    66.49%
+  Latency Distribution
+     50%   47.95ms
+     75%  103.68ms
+     90%  211.24ms
+     99%  958.22ms
+  1017904 requests in 30.10s, 97.07MB read
+Requests/sec:  33819.90
+Transfer/sec:      3.23MB
+
+```
