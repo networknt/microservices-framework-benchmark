@@ -11,6 +11,9 @@
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
 
+We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
+at light-java-example/performance/pipeline.lua.
+
 
 Here is the light-java server performance.
 
