@@ -1,0 +1,32 @@
+plugins {
+    id "java"
+    id "application"
+    id "com.github.johnrengelman.shadow" version "1.2.3"
+    id "io.spring.dependency-management" version "0.6.0.RELEASE"
+}
+
+mainClassName = "com.objectstyle.bootique.demo.Application"
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("io.bootique.bom:bootique-bom:0.20")
+    }
+}
+
+group "com.objectstyle.bootique.demo"
+version "1.0"
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "io.bootique:bootique"
+    compile "io.bootique.jetty:bootique-jetty"
+    compile "io.bootique.logback:bootique-logback"
+    compile "io.bootique.jersey:bootique-jersey"
+}
