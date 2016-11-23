@@ -7,6 +7,7 @@
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
+| Bootique + Jetty/Jersey | 650072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
@@ -273,4 +274,23 @@ Running 30s test @ http://localhost:8080
 Requests/sec:  33819.90
 Transfer/sec:      3.23MB
 
+```
+
+@IRus submitted a pull request for Bootique + Jetty/Jersey and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    39.08ms   43.35ms 462.13ms   87.33%
+    Req/Sec    16.46k     3.79k   31.04k    70.42%
+  Latency Distribution
+     50%   23.94ms
+     75%   49.95ms
+     90%   94.78ms
+     99%  204.74ms
+  1956621 requests in 30.07s, 335.88MB read
+Requests/sec:  65072.20
+Transfer/sec:     11.17MB
 ```
