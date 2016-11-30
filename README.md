@@ -7,6 +7,7 @@
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
+| RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Bootique + Jetty/Jersey | 650072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
@@ -293,4 +294,24 @@ Running 30s test @ http://localhost:8080
   1956621 requests in 30.07s, 335.88MB read
 Requests/sec:  65072.20
 Transfer/sec:     11.17MB
+```
+
+@hydra1983 submitted a pull request for RatPack and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:5050 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:5050
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.45ms   17.27ms 366.84ms   94.60%
+    Req/Sec    31.44k     6.39k   48.42k    83.28%
+  Latency Distribution
+     50%   10.04ms
+     75%   16.67ms
+     90%   24.47ms
+     99%   82.36ms
+  3747731 requests in 30.05s, 325.24MB read
+Requests/sec: 124700.70
+Transfer/sec:     10.82MB
+
 ```
