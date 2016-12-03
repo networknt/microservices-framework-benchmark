@@ -13,6 +13,8 @@
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
+| WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
+
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
 at light-java-example/performance/pipeline.lua.
@@ -315,3 +317,23 @@ Requests/sec: 124700.70
 Transfer/sec:     10.82MB
 
 ```
+
+@IRus submitted a pull request for WildFly Swarm and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    59.77ms   44.97ms 526.38ms   64.92%
+    Req/Sec     5.41k     1.43k    9.53k    74.58%
+  Latency Distribution
+     50%   74.16ms
+     75%  162.88ms
+     90%    0.00us
+     99%    0.00us
+  648138 requests in 30.09s, 85.30MB read
+Requests/sec:  21541.07
+Transfer/sec:      2.83MB
+```
+
