@@ -10,5 +10,6 @@ init = function(args)
 end
 
 request = function()
+   wrk.headers["J-Tenant-Id"] = "1007"
    return req
 end
