@@ -13,6 +13,7 @@
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
+| Payra Micro        | 24768.69 | 118.86      | 3.50MB   |
 | WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
 
 
@@ -337,3 +338,23 @@ Requests/sec:  21541.07
 Transfer/sec:      2.83MB
 ```
 
+@IRus submitted a pull request for Payra-Micro and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   118.86ms  144.34ms   1.77s    88.56%
+    Req/Sec     6.29k     2.75k   15.40k    63.00%
+  Latency Distribution
+     50%   69.49ms
+     75%  155.56ms
+     90%  282.09ms
+     99%  696.93ms
+  745507 requests in 30.10s, 105.28MB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  24768.69
+Transfer/sec:      3.50MB
+
+```
