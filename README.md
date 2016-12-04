@@ -13,7 +13,7 @@
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
-| Payra Micro        | 24768.69 | 118.86      | 3.50MB   |
+| Payra Micro        | 24768.69 | 118.86ms    | 3.50MB   |
 | WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
 
 
