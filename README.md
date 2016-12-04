@@ -8,7 +8,7 @@
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
-| Bootique + Jetty/Jersey | 650072.20 | 39.08ms | 11.17MB |
+| Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
