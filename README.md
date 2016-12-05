@@ -1,6 +1,6 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
-| ------------ | -------------- | ----------- | -------- |
+| ------------ | -------------: | ----------: | -------: |
 | Light Java   | 1457257.99     | 2.46ms      | 141.31MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
