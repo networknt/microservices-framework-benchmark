@@ -15,6 +15,7 @@
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
 | Payra Micro        | 24768.69 | 118.86ms    | 3.50MB   |
 | WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
+| Akka-Http         | 16678.93  | 88.35ms     | 2.47MB   |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -357,4 +358,23 @@ Running 30s test @ http://localhost:8080
 Requests/sec:  24768.69
 Transfer/sec:      3.50MB
 
+```
+
+@hydra1983 submitted a pull request for akka-http and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    88.35ms  148.88ms   1.93s    60.89%
+    Req/Sec     4.27k     1.37k    5.99k    76.84%
+  Latency Distribution
+     50%  119.42ms
+     75%    0.00us
+     90%    0.00us
+     99%    0.00us
+  501309 requests in 30.06s, 74.10MB read
+Requests/sec:  16678.93
+Transfer/sec:      2.47MB
 ```

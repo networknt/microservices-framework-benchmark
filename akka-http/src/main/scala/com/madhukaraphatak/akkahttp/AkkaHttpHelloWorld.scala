@@ -21,7 +21,7 @@ object AkkaHttpHelloWorld {
       pathSingleSlash {
         get {
           complete {
-            "Hello world"
+            "Hello World!"
           }
         }
       }
