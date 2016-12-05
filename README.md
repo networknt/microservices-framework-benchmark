@@ -6,6 +6,7 @@
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
+| Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
@@ -15,7 +16,6 @@
 | Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
 | Payra Micro        | 24768.69 | 118.86ms    | 3.50MB   |
 | WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
-| Akka-Http         | 16678.93  | 88.35ms     | 2.47MB   |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -362,19 +362,21 @@ Transfer/sec:      3.50MB
 
 @hydra1983 submitted a pull request for akka-http and here is the result.
 
+@cortwave submitted a pull request to upgrade to version 2.4.11. Here is the latest result.
 ```
 steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    88.35ms  148.88ms   1.93s    60.89%
-    Req/Sec     4.27k     1.37k    5.99k    76.84%
+    Latency    12.21ms   30.77ms 712.06ms   98.78%
+    Req/Sec    33.52k     3.99k   68.36k    86.96%
   Latency Distribution
-     50%  119.42ms
-     75%    0.00us
-     90%    0.00us
-     99%    0.00us
-  501309 requests in 30.06s, 74.10MB read
-Requests/sec:  16678.93
-Transfer/sec:      2.47MB
+     50%    8.57ms
+     75%   13.30ms
+     90%   18.62ms
+     99%   52.13ms
+  3972310 requests in 30.06s, 587.18MB read
+Requests/sec: 132157.96
+Transfer/sec:     19.54MB
+
 ```
