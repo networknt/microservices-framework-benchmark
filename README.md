@@ -5,6 +5,7 @@
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
+| Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
@@ -379,4 +380,23 @@ Running 30s test @ http://localhost:8080
 Requests/sec: 132157.96
 Transfer/sec:     19.54MB
 
+```
+
+@dpapworth submitted a pull request to add play-java and here is the result.
+
+```
+ steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+ Running 30s test @ http://localhost:8080
+   4 threads and 128 connections
+   Thread Stats   Avg      Stdev     Max   +/- Stdev
+     Latency    12.15ms   14.27ms 375.72ms   89.98%
+     Req/Sec    44.60k     7.32k   86.18k    73.83%
+   Latency Distribution
+      50%    8.20ms
+      75%   15.65ms
+      90%   26.44ms
+      99%   60.57ms
+   5325273 requests in 30.05s, 655.14MB read
+ Requests/sec: 177202.75
+ Transfer/sec:     21.80MB
 ```
