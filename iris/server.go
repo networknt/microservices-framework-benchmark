@@ -1,6 +1,6 @@
 package main
 
-import "github.com/kataras/iris"
+import ("github.com/kataras/iris")
 
 func main() {
 	iris.Config.Charset = "UTF-8" // this is the default, you don't have to set it manually

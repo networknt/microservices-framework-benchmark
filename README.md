@@ -3,6 +3,7 @@
 | ------------ | -------------: | ----------: | -------: |
 | Light Java   | 1457257.99     | 2.46ms      | 141.31MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
+| Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
 | Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
@@ -399,4 +400,24 @@ Transfer/sec:     19.54MB
    5325273 requests in 30.05s, 655.14MB read
  Requests/sec: 177202.75
  Transfer/sec:     21.80MB
+```
+
+Add iris which is a go web framework based on fasthttp and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.77ms   11.26ms 181.19ms   90.98%
+    Req/Sec   208.26k    36.36k  347.64k    74.83%
+  Latency Distribution
+     50%    2.06ms
+     75%    4.54ms
+     90%   15.21ms
+     99%   57.44ms
+  24886288 requests in 30.05s, 3.31GB read
+Requests/sec: 828035.66
+Transfer/sec:    112.92MB
+
 ```
