@@ -3,6 +3,7 @@ package demo;
 import act.Version;
 import act.boot.app.RunApp;
 import org.osgl.mvc.annotation.GetAction;
+import org.osgl.mvc.annotation.SessionFree;
 
 /**
  * The simple hello world app.
@@ -14,6 +15,7 @@ import org.osgl.mvc.annotation.GetAction;
 public class Example {
 
     @GetAction
+    @SessionFree
     public String home() {
         return "Hello World!";
     }
