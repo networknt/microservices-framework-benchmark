@@ -4,8 +4,6 @@ import act.Version;
 import act.boot.app.RunApp;
 import org.osgl.mvc.annotation.GetAction;
 
-import static act.controller.Controller.Util.text;
-
 /**
  * The simple hello world app.
  * <p>Run this app, try to update some of the code, then
@@ -16,8 +14,8 @@ import static act.controller.Controller.Util.text;
 public class Example {
 
     @GetAction
-    public void home() {
-        text("Hello World!");
+    public String home() {
+        return "Hello World!";
     }
 
     public static void main(String[] args) throws Exception {
