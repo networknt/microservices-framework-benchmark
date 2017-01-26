@@ -11,6 +11,7 @@
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
+| Actframework   | 124369.69     | 11.17ms    | 18.03MB |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
@@ -419,5 +420,25 @@ Running 30s test @ http://localhost:8080
   24886288 requests in 30.05s, 3.31GB read
 Requests/sec: 828035.66
 Transfer/sec:    112.92MB
+
+```
+
+@greenlaw110 submitted a pull request to add actframework and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:5460 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:5460
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.17ms    9.23ms 137.93ms   81.89%
+    Req/Sec    31.27k     2.03k   45.25k    84.92%
+  Latency Distribution
+     50%    9.06ms
+     75%   13.57ms
+     90%   22.82ms
+     99%   45.36ms
+  3736976 requests in 30.05s, 541.71MB read
+Requests/sec: 124369.69
+Transfer/sec:     18.03MB
 
 ```
