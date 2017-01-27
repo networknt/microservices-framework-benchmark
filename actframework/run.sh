@@ -1,5 +1,5 @@
 #!/bin/sh
-mvn clean package
+mvn -U clean package
 cd target/dist
 unzip *
 ./start
