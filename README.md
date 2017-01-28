@@ -11,8 +11,8 @@
 | Dropwizard     | 79057.30     | 60.37ms     | 7.54MB  |
 | Spring Boot Tomcat | 68554.49 | 42.84ms     | 8.25MB   |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
-| WildFly Swarm     | 58179.11  | 20.08ms     | 7.66MB   |
-| Ninjaframework | 51414.21 | 28.12ms | 14.66MB |
+| WildFly Swarm  | 58179.11 | 20.08ms | 7.66MB   |
+| Ninjaframework | 51948.21 | 27.55ms | 14.81MB |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -197,14 +197,14 @@ luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    28.12ms   19.07ms 167.60ms   67.17%
-    Req/Sec    12.92k   846.50    15.76k    69.42%
+    Latency    27.55ms   18.56ms 169.72ms   66.95%
+    Req/Sec    13.08k     1.13k   40.77k    85.26%
   Latency Distribution
-     50%   24.51ms
-     75%   39.80ms
-     90%   54.84ms
-     99%   82.64ms
-  1542717 requests in 30.01s, 439.90MB read
-Requests/sec:  51414.21
-Transfer/sec:     14.66MB
+     50%   24.11ms
+     75%   39.00ms
+     90%   53.58ms
+     99%   80.25ms
+  1563624 requests in 30.10s, 445.87MB read
+Requests/sec:  51948.21
+Transfer/sec:     14.81MB
 ```
