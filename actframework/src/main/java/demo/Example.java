@@ -20,6 +20,11 @@ public class Example {
         return "Hello World!";
     }
 
+    @GetAction("/hello")
+    public String helloWithSession() {
+        return "Hello World!";
+    }
+
     public static void main(String[] args) throws Exception {
         RunApp.start("Hello World", Version.appVersion(), Example.class);
     }

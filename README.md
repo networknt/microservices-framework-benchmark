@@ -3,14 +3,16 @@
 | ------------ | -------------: | ----------: | -------: |
 | Light Java   | 1670067.25     | 2.34ms      | 168.83MB |
 | Spring Boot Reactor | 384186.78 | 4.17ms    | 28.21MB  |
-| ActFramework | 300959.52      | 7.11ms      | 43.63MB  |
+| ActFramework | 352478.93      | 5.94ms      | 51.09MB  |
 | Spark        | 291954.47      |  11.14ms    | 49.28MB  |
+| Play-Java    | 218074.28      |  13.80ms    | 26.83MB  |
 | Jooby/Undertow | 140645.13      |  15.91ms  | 20.25MB |
 | Spring Boot Undertow | 86478.72 | 18.49ms   | 12.54MB |
 | Dropwizard     | 79057.30     | 60.37ms     | 7.54MB  |
 | Spring Boot Tomcat | 68554.49 | 42.84ms     | 8.25MB   |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | WildFly Swarm     | 58179.11  | 20.08ms     | 7.66MB   |
+| Ninjaframework | 51414.21 | 28.12ms | 14.66MB |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -43,16 +45,16 @@ luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 
 Running 30s test @ http://localhost:5460
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     7.11ms    9.06ms 121.60ms   87.50%
-    Req/Sec    75.63k     4.22k   92.00k    68.67%
+    Latency     5.94ms    7.51ms 124.38ms   87.51%
+    Req/Sec    88.59k     4.55k  101.28k    73.33%
   Latency Distribution
-     50%    3.77ms
-     75%    7.40ms
-     90%   19.06ms
-     99%   42.99ms
-  9031248 requests in 30.01s, 1.28GB read
-Requests/sec: 300959.52
-Transfer/sec:     43.63MB
+     50%    3.20ms
+     75%    6.18ms
+     90%   15.81ms
+     99%   35.67ms
+  10578592 requests in 30.01s, 1.50GB read
+Requests/sec: 352478.93
+Transfer/sec:     51.09MB
 ```
 
 Here is the spring-boot-tomcat (tomcat embedded) performance.
@@ -167,4 +169,42 @@ Running 30s test @ http://localhost:8080
   4221760 requests in 30.02s, 607.95MB read
 Requests/sec: 140645.13
 Transfer/sec:     20.25MB
+```
+
+Here is Play-Java performance:
+
+```
+luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.90ms   14.89ms 186.20ms   86.63%
+    Req/Sec    54.89k     9.39k  121.86k    70.94%
+  Latency Distribution
+     50%    8.83ms
+     75%   19.19ms
+     90%   33.24ms
+     99%   67.94ms
+  6563656 requests in 30.10s, 807.49MB read
+Requests/sec: 218074.28
+Transfer/sec:     26.83MB
+```
+
+Here is Ninjaframework performance
+
+```
+luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    28.12ms   19.07ms 167.60ms   67.17%
+    Req/Sec    12.92k   846.50    15.76k    69.42%
+  Latency Distribution
+     50%   24.51ms
+     75%   39.80ms
+     90%   54.84ms
+     99%   82.64ms
+  1542717 requests in 30.01s, 439.90MB read
+Requests/sec:  51414.21
+Transfer/sec:     14.66MB
 ```
