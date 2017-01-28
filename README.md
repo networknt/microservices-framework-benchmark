@@ -7,6 +7,7 @@
 | Spark        | 291954.47      |  11.14ms    | 49.28MB  |
 | JFinal 3     | 229960.41      |   8.93ms    | 49.12MB  |
 | Play-Java    | 218074.28      |  13.80ms    | 26.83MB  |
+| AKKA-HTTP    | 200481.39      |  26.26ms    | 29.64MB  |
 | Jooby/Undertow | 140645.13      |  15.91ms  | 20.25MB |
 | Spring Boot Undertow | 86478.72 | 18.49ms   | 12.54MB |
 | Dropwizard     | 79057.30     | 60.37ms     | 7.54MB  |
@@ -246,4 +247,23 @@ Running 30s test @ http://localhost:8080
   6921586 requests in 30.10s, 1.44GB read
 Requests/sec: 229960.41
 Transfer/sec:     49.12MB
+```
+
+Here is AKKA-HTTP performance 
+
+```
+luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    26.26ms  128.23ms   1.83s    97.35%
+    Req/Sec    51.74k    11.87k  133.70k    87.02%
+  Latency Distribution
+     50%    5.65ms
+     75%    9.42ms
+     90%   17.70ms
+     99%  786.31ms
+  6034389 requests in 30.10s, 0.87GB read
+Requests/sec: 200481.39
+Transfer/sec:     29.64MB
 ```
