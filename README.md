@@ -13,7 +13,7 @@
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | WildFly Swarm  | 58179.11 | 20.08ms | 7.66MB   |
 | Ninjaframework | 51948.21 | 27.55ms | 14.81MB |
-
+| Play-1         | 50176.54 | 22.42ms | 21.44MB |
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
 at light-java-example/performance/pipeline.lua.
@@ -207,4 +207,23 @@ Running 30s test @ http://localhost:8080
   1563624 requests in 30.10s, 445.87MB read
 Requests/sec:  51948.21
 Transfer/sec:     14.81MB
+```
+
+Here is Playframework v1.4.x performance
+
+```
+luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 -d30s http://localhost:9000 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:9000
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.42ms   11.35ms  70.70ms   58.37%
+    Req/Sec    12.61k   730.55    14.56k    75.75%
+  Latency Distribution
+     50%   22.14ms
+     75%   32.31ms
+     90%   37.47ms
+     99%   43.82ms
+  1505641 requests in 30.01s, 643.28MB read
+Requests/sec:  50176.54
+Transfer/sec:     21.44MB
 ```
