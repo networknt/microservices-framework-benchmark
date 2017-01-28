@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.demo</groupId>
+  <artifactId>jfinal_demo_for_maven</artifactId>
+  <packaging>war</packaging>
+  <version>3.0-SNAPSHOT</version>
+  <name>jfinal_demo_for_maven Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.jfinal</groupId>
+    	<artifactId>jetty-server</artifactId>
+    	<version>8.1.8</version>
+    </dependency>
+      <dependency>
+    	<groupId>com.jfinal</groupId>
+    	<artifactId>jfinal</artifactId>
+    	<version>3.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>1.2.16</version>
+    </dependency>
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.20</version>
+    </dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>1.0.5</version>
+	</dependency>
+    <dependency>
+    	<groupId>com.jfinal</groupId>
+    	<artifactId>cos</artifactId>
+    	<version>26Dec2008</version>
+    </dependency>
+	
+  </dependencies>
+
+
+	<!-- 添加快照版本库,updatePolicy: always、daily、interval、never -->
+	<!-- repositories>
+    <repository>
+           <id>sonatype-nexus-snapshots</id>
+           <name>Sonatype Nexus Snapshots</name>
+           <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+           <releases>
+               <enabled>false</enabled>
+           </releases>
+           <snapshots>
+               <enabled>true</enabled>
+               <updatePolicy>daily</updatePolicy>
+           </snapshots>
+       </repository>
+  </repositories -->
+  
+  <build>
+    <finalName>jfinal_demo_for_maven</finalName>
+	    <plugins>
+		  <plugin>
+		    <groupId>org.mortbay.jetty</groupId>
+		    <artifactId>jetty-maven-plugin</artifactId>
+		    <version>8.1.8.v20121106</version>
+		    <configuration>
+		        <stopKey>stop</stopKey>
+		        <stopPort>5599</stopPort>
+		        <webAppConfig>
+		            <contextPath>/</contextPath>
+		        </webAppConfig>
+		        <scanIntervalSeconds>5</scanIntervalSeconds>
+		        <connectors>
+		            <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+		                <port>80</port>
+		                <maxIdleTime>60000</maxIdleTime>
+		            </connector>
+		        </connectors>
+		    </configuration>
+		  </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Xms512m</argument>
+                        <argument>-Xmx512m</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>com.demo.Demo</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.5</version>
+                <executions>
+                    <execution>
+                        <id>create-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/assembly/pkg.xml</descriptor>
+                            </descriptors>
+                            <outputDirectory>${project.build.directory}/dist/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+	  </plugins>
+  </build>
+</project>

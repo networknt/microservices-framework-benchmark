@@ -5,6 +5,7 @@
 | Spring Boot Reactor | 384186.78 | 4.17ms    | 28.21MB  |
 | ActFramework | 352478.93      | 5.94ms      | 51.09MB  |
 | Spark        | 291954.47      |  11.14ms    | 49.28MB  |
+| JFinal 3     | 229960.41      |   8.93ms    | 49.12MB  |
 | Play-Java    | 218074.28      |  13.80ms    | 26.83MB  |
 | Jooby/Undertow | 140645.13      |  15.91ms  | 20.25MB |
 | Spring Boot Undertow | 86478.72 | 18.49ms   | 12.54MB |
@@ -226,4 +227,23 @@ Running 30s test @ http://localhost:9000
   1505641 requests in 30.01s, 643.28MB read
 Requests/sec:  50176.54
 Transfer/sec:     21.44MB
+```
+
+Here is JFinal 3.0 performance
+
+```
+luog@luog-Satellite-P50-A:~/p/tmp/light-java-example/performance$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.93ms   12.67ms 171.84ms   92.07%
+    Req/Sec    57.81k     9.61k  103.15k    79.67%
+  Latency Distribution
+     50%    5.20ms
+     75%    9.44ms
+     90%   18.31ms
+     99%   71.59ms
+  6921586 requests in 30.10s, 1.44GB read
+Requests/sec: 229960.41
+Transfer/sec:     49.12MB
 ```

@@ -1,4 +1,4 @@
-[Wildfly Swarm](http://wildfly-swarm.io/)
+[NinjaFramework](http://www.ninjaframework.org/)
 
 Build:
 
