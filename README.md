@@ -15,7 +15,6 @@
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
-| Actframework   | 124369.69     | 11.17ms    | 18.03MB |
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
