@@ -1,0 +1,6 @@
+/pippo-jetty/.idea/
+/pippo-jetty/target/
+/pippo-tomcat/.idea/
+/pippo-tomcat/target/
+/pippo-undertow/.idea/
+/pippo-undertow/target/
