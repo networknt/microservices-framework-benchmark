@@ -4,15 +4,19 @@
 | ------------ | -------------: | ----------: | -------: |
 | Light Java   | 1457257.99     | 2.46ms      | 141.31MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
+| ActFramework | 945429.13      | 2.22ms      | 136.15MB |
 | Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
+| Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
+| Pippo-Jetty  | 178055.45      |  15.66ms    | 26.83MB  |
 | Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Actframework   | 124369.69     | 11.17ms    | 18.03MB |
+| Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
@@ -427,19 +431,80 @@ Transfer/sec:    112.92MB
 @greenlaw110 submitted a pull request to add actframework and here is the result.
 
 ```
-steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:5460 -s pipeline.lua --latency -- / 16
-Running 30s test @ http://localhost:5460
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    11.17ms    9.23ms 137.93ms   81.89%
-    Req/Sec    31.27k     2.03k   45.25k    84.92%
+    Latency     2.22ms    6.58ms 219.99ms   97.98%
+    Req/Sec   241.95k    59.46k  420.20k    73.85%
   Latency Distribution
-     50%    9.06ms
-     75%   13.57ms
-     90%   22.82ms
-     99%   45.36ms
-  3736976 requests in 30.05s, 541.71MB read
-Requests/sec: 124369.69
-Transfer/sec:     18.03MB
+     50%    1.45ms
+     75%    2.24ms
+     90%    3.65ms
+     99%   11.87ms
+  28389984 requests in 30.03s, 3.99GB read
+Requests/sec: 945429.13
+Transfer/sec:    136.15MB
+```
+
+
+@rygel submitted a pull request to add Pippo-Jetty and here is the result.
 
 ```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.66ms   26.96ms 464.86ms   93.37%
+    Req/Sec    45.05k    18.29k  100.74k    69.23%
+  Latency Distribution
+     50%    8.11ms
+     75%   16.11ms
+     90%   31.43ms
+     99%  149.57ms
+  5356385 requests in 30.08s, 807.10MB read
+Requests/sec: 178055.45
+Transfer/sec:     26.83MB
+
+```
+
+@rygel submitted a pull request to add Pippo-Tomcat and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    23.50ms   40.19ms 768.53ms   93.01%
+    Req/Sec    26.57k    11.43k   86.99k    70.86%
+  Latency Distribution
+     50%   12.15ms
+     75%   24.84ms
+     90%   49.50ms
+     99%  204.89ms
+  3125385 requests in 30.07s, 459.58MB read
+Requests/sec: 103948.18
+Transfer/sec:     15.29MB
+
+```
+
+@rygel submitted a pull request to add Pippo-Undertow and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.80ms   21.25ms 448.49ms   95.90%
+    Req/Sec    54.74k    16.92k   85.44k    77.53%
+  Latency Distribution
+     50%    5.44ms
+     75%    9.18ms
+     90%   15.85ms
+     99%  109.31ms
+  6500688 requests in 30.06s, 0.92GB read
+Requests/sec: 216254.56
+Transfer/sec:     31.35MB
+
+```
+
