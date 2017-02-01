@@ -55,7 +55,7 @@
     <appender-ref ref="METRIC_FILE" />
   </logger>
 
-  <logger name="demo.helloworld.PersonController" level="DEBUG" additivity="false">
+  <logger name="benchmark.helloworld.PersonController" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 

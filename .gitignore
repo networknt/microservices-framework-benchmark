@@ -1,6 +1,17 @@
-/pippo-jetty/.idea/
-/pippo-jetty/target/
-/pippo-tomcat/.idea/
-/pippo-tomcat/target/
-/pippo-undertow/.idea/
-/pippo-undertow/target/
+*.class
+.classpath
+.project
+.settings
+.vscode
+# Package Files #
+*.jar
+*.war
+*.ear
+lib
+target
+.idea
+classes
+*.iml
+deploy
+**/.act*
+git.log
