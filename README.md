@@ -12,11 +12,13 @@
 | Pippo-Jetty  | 178055.45      |  15.66ms    | 26.83MB  |
 | Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
+| JFinal       | 139467.87      |  11.89ms    | 29.79MB  |
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
 | Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
+| NinjaFramework | 47956.43      | 55.76ms     | 13.67MB |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
@@ -444,6 +446,45 @@ Running 30s test @ http://localhost:8080
   28389984 requests in 30.03s, 3.99GB read
 Requests/sec: 945429.13
 Transfer/sec:    136.15MB
+```
+
+@greenlaw110 submitted a pull request to add JFinal and here is the result.
+
+```
+steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.89ms   13.66ms 308.54ms   91.36%
+    Req/Sec    35.82k     9.34k   69.40k    70.64%
+  Latency Distribution
+     50%    8.55ms
+     75%   14.81ms
+     90%   23.92ms
+     99%   59.50ms
+  4195471 requests in 30.08s, 0.88GB read
+Requests/sec: 139467.87
+Transfer/sec:     29.79MB
+
+```
+
+@greenlaw110 submitted a pull request to add NijinFramework and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.76ms   63.72ms   1.05s    90.55%
+    Req/Sec    12.11k     2.93k   24.49k    77.75%
+  Latency Distribution
+     50%   38.35ms
+     75%   71.44ms
+     90%  116.40ms
+     99%  324.54ms
+  1442613 requests in 30.08s, 411.36MB read
+Requests/sec:  47956.43
+Transfer/sec:     13.67MB
 ```
 
 
