@@ -19,6 +19,7 @@
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
 | NinjaFramework | 47956.43      | 55.76ms     | 13.67MB |
+| Play 1         | 44491.87      | 10.73ms    | 18.75MB  |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
@@ -485,6 +486,26 @@ Running 30s test @ http://localhost:8080
   1442613 requests in 30.08s, 411.36MB read
 Requests/sec:  47956.43
 Transfer/sec:     13.67MB
+```
+
+@greenlaw110 submitted a pull request to add Play1 and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:9000 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:9000
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.73ms   23.78ms 397.31ms    0.00%
+    Req/Sec    11.32k     2.41k   14.02k    86.33%
+  Latency Distribution
+     50%    0.00us
+     75%    0.00us
+     90%    0.00us
+     99%    0.00us
+  1335580 requests in 30.02s, 562.98MB read
+Requests/sec:  44491.87
+Transfer/sec:     18.75MB
+
 ```
 
 
