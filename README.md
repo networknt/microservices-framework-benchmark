@@ -2,7 +2,7 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
 | ------------ | -------------: | ----------: | -------: |
-~~| Light Java   | 2186203.44     | 2.35ms      | 221.00MB |~~
+| ~~Light Java~~  | ~~2186203.44~~ | ~~2.35ms~~ | ~~221.00MB~~ |
 | Light Java   | 1504659.18     | 2.41ms      | 152.11MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | ActFramework | 945429.13      | 2.22ms      | 136.15MB |
