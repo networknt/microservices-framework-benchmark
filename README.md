@@ -2,7 +2,7 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
 | ------------ | -------------: | ----------: | -------: |
-| Light Java   | 2186203.44     | 2.35ms      | 221.00MB |
+~~| Light Java   | 2186203.44     | 2.35ms      | 221.00MB |~~
 | Light Java   | 1504659.18     | 2.41ms      | 152.11MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | ActFramework | 945429.13      | 2.22ms      | 136.15MB |
@@ -53,7 +53,7 @@ Transfer/sec:    152.11MB
 
 ```
 
-Here is another test with for light-java to push more requests but so many other frameworks get server error.
+Here is another test with for light-java to push more requests but some other frameworks get server errors.
 
 ```
 steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 50
