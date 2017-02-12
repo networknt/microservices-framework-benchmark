@@ -2,7 +2,8 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
 | ------------ | -------------: | ----------: | -------: |
-| Light Java   | 1457257.99     | 2.46ms      | 141.31MB |
+| Light Java   | 2186203.44     | 2.35ms      | 221.00MB |
+| Light Java   | 1504659.18     | 2.41ms      | 152.11MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | ActFramework | 945429.13      | 2.22ms      | 136.15MB |
 | Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
@@ -29,28 +30,49 @@
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
-at light-java-example/performance/pipeline.lua.
+at microservices-framework-benchmark/pipeline.lua.
 
 
-Here is the light-java server performance.
+Here is the light-java server performance with the same command line with other frameworks.
 
 ```
-steve@joy:~/tool/wrk$  wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.46ms    3.83ms  85.33ms   89.36%
-    Req/Sec   366.70k    62.79k  714.24k    79.06%
+    Latency     2.41ms    6.25ms 141.05ms   94.62%
+    Req/Sec   378.64k    70.94k  610.59k    83.38%
   Latency Distribution
-     50%    1.05ms
-     75%    2.69ms
-     90%    6.58ms
-     99%   17.43ms
-  43814624 requests in 30.07s, 4.33GB read
-Requests/sec: 1457257.99
-Transfer/sec:    147.31MB
+     50%    0.91ms
+     75%    2.13ms
+     90%    5.65ms
+     99%   19.49ms
+  45190144 requests in 30.03s, 4.46GB read
+Requests/sec: 1504659.18
+Transfer/sec:    152.11MB
 
 ```
+
+Here is another test with for light-java to push more requests but so many other frameworks get server error.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 50
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.35ms    2.80ms  54.23ms   89.24%
+    Req/Sec   550.10k    64.34k    1.22M    74.54%
+  Latency Distribution
+     50%    1.56ms
+     75%    2.87ms
+     90%    5.41ms
+     99%   22.17ms
+  65803650 requests in 30.10s, 6.50GB read
+Requests/sec: 2186203.44
+Transfer/sec:    221.00MB
+
+```
+
 
 Here is the spring-boot-tomcat (tomcat embedded) performance.
 

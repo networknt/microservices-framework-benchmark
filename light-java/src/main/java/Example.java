@@ -5,12 +5,13 @@ import io.undertow.server.HttpServerExchange;
 
 
 public class Example implements HandlerProvider {
+    private static final String MESSAGE = "Hello World!";
 
     public HttpHandler getHandler() {
         return Handlers.path()
         .addPrefixPath("/", new HttpHandler() {
                 public void handleRequest(HttpServerExchange exchange) {
-                    exchange.getResponseSender().send("Hello World!");
+                    exchange.getResponseSender().send(MESSAGE);
             	}
             }
         );
