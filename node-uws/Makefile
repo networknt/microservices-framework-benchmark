@@ -7,8 +7,6 @@ default:
 	NODE=targets/node-v5.11.0 ABI=47 make `(uname -s)`
 	NODE=targets/node-v6.0.0 ABI=48 make `(uname -s)`
 	NODE=targets/node-v7.1.0 ABI=51 make `(uname -s)`
-	cp ../README.md dist/README.md
-	cp ../LICENSE dist/LICENSE
 	cp -r ./src dist/
 	cp addon.cpp dist/src/addon.cpp
 	cp addon.h dist/src/addon.h
@@ -25,8 +23,6 @@ Darwin:
 	g++ $(CPP_SHARED) $(CPP_OSX) -I $$NODE/include/node -o dist/uws_darwin_$$ABI.node
 .PHONY: clean
 clean:
-	rm -f dist/README.md
-	rm -f dist/LICENSE
 	rm -f dist/uws_*.node
 	rm -rf dist/src
 	rm -rf targets
