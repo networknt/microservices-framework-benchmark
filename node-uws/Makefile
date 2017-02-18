@@ -1,4 +1,4 @@
-CPP_SHARED := -std=c++11 -O3 -I ../src -shared -fPIC ../src/Extensions.cpp ../src/Group.cpp ../src/WebSocketImpl.cpp ../src/Networking.cpp ../src/Hub.cpp ../src/Node.cpp ../src/WebSocket.cpp ../src/HTTPSocket.cpp ../src/Socket.cpp addon.cpp
+CPP_SHARED := -std=c++11 -O3 -I ./src -shared -fPIC ./src/Extensions.cpp ./src/Group.cpp ./src/WebSocketImpl.cpp ./src/Networking.cpp ./src/Hub.cpp ./src/Node.cpp ./src/WebSocket.cpp ./src/HTTPSocket.cpp ./src/Socket.cpp addon.cpp
 CPP_OSX := -stdlib=libc++ -mmacosx-version-min=10.7 -undefined dynamic_lookup
 
 default:
@@ -9,7 +9,7 @@ default:
 	NODE=targets/node-v7.1.0 ABI=51 make `(uname -s)`
 	cp ../README.md dist/README.md
 	cp ../LICENSE dist/LICENSE
-	cp -r ../src dist/
+	cp -r ./src dist/
 	cp addon.cpp dist/src/addon.cpp
 	cp addon.h dist/src/addon.h
 	for f in dist/*.node; do chmod +x $$f; done
