@@ -6,6 +6,7 @@
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
 | ActFramework | 945429.13      | 2.22ms      | 136.15MB |
 | Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
+| Node-uws     | 589924.44      |  7.22ms     | 28.69MB  |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
@@ -589,4 +590,23 @@ Requests/sec: 216254.56
 Transfer/sec:     31.35MB
 
 ```
+@gonzalovazquez submitted a pull request to add node-uws and here is the result.  
 
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.22ms   69.98ms   1.64s    99.15%
+    Req/Sec   148.28k    28.41k  295.52k    93.92%
+  Latency Distribution
+     50%    1.88ms
+     75%    2.73ms
+     90%    3.24ms
+     99%    6.91ms
+  17706848 requests in 30.02s, 861.21MB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec: 589924.44
+Transfer/sec:     28.69MB
+
+```
