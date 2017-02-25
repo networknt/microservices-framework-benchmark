@@ -2,10 +2,11 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
 | ------------ | -------------: | ----------: | -------: |
-| Light Java   | 1504659.18     | 2.41ms      | 152.11MB |
 | Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
+| Light Java   | 1344512.65     | 2.36ms      | 169.25MB |
 | ActFramework | 945429.13      | 2.22ms      | 136.15MB |
 | Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
+| Vertx        | 803311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | 589924.44      |  7.22ms     | 28.69MB  |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
@@ -40,16 +41,16 @@ steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua 
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.41ms    6.25ms 141.05ms   94.62%
-    Req/Sec   378.64k    70.94k  610.59k    83.38%
+    Latency     2.36ms    3.55ms  53.35ms   89.03%
+    Req/Sec   338.18k    49.76k  717.09k    76.64%
   Latency Distribution
-     50%    0.91ms
-     75%    2.13ms
-     90%    5.65ms
-     99%   19.49ms
-  45190144 requests in 30.03s, 4.46GB read
-Requests/sec: 1504659.18
-Transfer/sec:    152.11MB
+     50%    1.05ms
+     75%    2.48ms
+     90%    6.35ms
+     99%   17.28ms
+  40436304 requests in 30.08s, 4.97GB read
+Requests/sec: 1344512.65
+Transfer/sec:    169.25MB
 
 ```
 
@@ -608,5 +609,25 @@ Running 30s test @ http://localhost:8080
   Socket errors: connect 0, read 0, write 0, timeout 4
 Requests/sec: 589924.44
 Transfer/sec:     28.69MB
+
+```
+
+@seanjburns submitted a pull request to add vertx and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.37ms    3.24ms  79.48ms   90.49%
+    Req/Sec   201.91k    19.79k  269.09k    78.08%
+  Latency Distribution
+     50%    1.41ms
+     75%    2.42ms
+     90%    5.41ms
+     99%   16.08ms
+  24114240 requests in 30.02s, 2.87GB read
+Requests/sec: 803311.31
+Transfer/sec:     98.06MB
 
 ```
