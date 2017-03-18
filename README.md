@@ -20,7 +20,8 @@
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
-| NinjaFramework | 47956.43      | 55.76ms     | 13.67MB |
+| Baseio         | 50304.90      | 22.17ms    | 6.38MB   |
+| NinjaFramework | 47956.43      | 55.76ms    | 13.67MB |
 | Play 1         | 44491.87      | 10.73ms    | 18.75MB  |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
 | Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
@@ -629,5 +630,25 @@ Running 30s test @ http://localhost:8080
   24114240 requests in 30.02s, 2.87GB read
 Requests/sec: 803311.31
 Transfer/sec:     98.06MB
+
+```
+
+@kevin-better submitted a pull request to add baseio and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.17ms   11.24ms 203.78ms   59.78%
+    Req/Sec    12.64k     1.90k   15.84k    90.67%
+  Latency Distribution
+     50%   22.14ms
+     75%   32.22ms
+     90%   37.41ms
+     99%   40.08ms
+  1509967 requests in 30.02s, 191.52MB read
+Requests/sec:  50304.90
+Transfer/sec:      6.38MB
 
 ```
