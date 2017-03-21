@@ -25,9 +25,9 @@ public class Server  {
 		
 		c.setSERVER_MEMORY_POOL_UNIT(256);
 		c.setSERVER_ENABLE_MEMORY_POOL_DIRECT(true);
-		c.setSERVER_CORE_SIZE(2);
+		//c.setSERVER_CORE_SIZE(2);
 		c.setSERVER_ENABLE_MEMORY_POOL(true);
-		c.setSERVER_MEMORY_POOL_CAPACITY_RATE(2);
+		c.setSERVER_MEMORY_POOL_CAPACITY_RATE(4);
 
 		SocketChannelContext context = new NioSocketChannelContext(c);
 
