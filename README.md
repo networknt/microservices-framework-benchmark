@@ -20,7 +20,7 @@
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
-| Baseio         | 50304.90      | 22.17ms    | 6.38MB   |
+| Baseio         | 50361.98      | 22.20ms    | 6.39MB   |
 | NinjaFramework | 47956.43      | 55.76ms    | 13.67MB |
 | Play 1         | 44491.87      | 10.73ms    | 18.75MB  |
 | Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
@@ -640,15 +640,15 @@ steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua 
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    22.17ms   11.24ms 203.78ms   59.78%
-    Req/Sec    12.64k     1.90k   15.84k    90.67%
+    Latency    22.20ms   11.17ms 203.34ms   59.61%
+    Req/Sec    12.66k     1.85k   15.82k    77.92%
   Latency Distribution
-     50%   22.14ms
-     75%   32.22ms
-     90%   37.41ms
-     99%   40.08ms
-  1509967 requests in 30.02s, 191.52MB read
-Requests/sec:  50304.90
-Transfer/sec:      6.38MB
+     50%   22.16ms
+     75%   32.24ms
+     90%   37.42ms
+     99%   40.12ms
+  1511579 requests in 30.01s, 191.73MB read
+Requests/sec:  50361.98
+Transfer/sec:      6.39MB
 
 ```
