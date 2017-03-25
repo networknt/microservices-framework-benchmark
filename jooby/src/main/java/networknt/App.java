@@ -1,6 +1,7 @@
-package com.mycompany;
+package networknt;
 
 import org.jooby.Jooby;
+import org.jooby.banner.Banner;
 
 /**
  * @author jooby generator
@@ -8,6 +9,7 @@ import org.jooby.Jooby;
 public class App extends Jooby {
 
   {
+    use(new Banner("networknt benchmark"));
     get("/", (req, rsp) -> rsp.send("Hello World!"));
   }
 
