@@ -8,6 +8,7 @@
 | Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
 | Vertx        | 803311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | 589924.44      |  7.22ms     | 28.69MB  |
+| Jooby/Undertow | 317385.05      |  4.31ms  | 45.70MB |
 | Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
 | Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
 | Spark        | 194553.83      |  13.85ms    | 32.47MB  |
@@ -16,7 +17,6 @@
 | Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
 | JFinal       | 139467.87      |  11.89ms    | 29.79MB  |
 | Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
-| Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
 | RatPack        | 124700.70     | 13.45ms    | 10.82MB |
 | Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
 | Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
@@ -650,5 +650,24 @@ Running 30s test @ http://localhost:8080
   1511579 requests in 30.01s, 191.73MB read
 Requests/sec:  50361.98
 Transfer/sec:      6.39MB
+
+```
+
+@jknack submitted a pull request to upgrade jooby to version 1.1 and here is the result.
+
+```
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.31ms    3.32ms  48.26ms   78.72%
+    Req/Sec    79.88k     7.98k  152.40k    77.13%
+  Latency Distribution
+     50%    3.61ms
+     75%    5.74ms
+     90%    8.06ms
+     99%   16.61ms
+  9550240 requests in 30.09s, 1.34GB read
+Requests/sec: 317385.05
+Transfer/sec:     45.70MB
 
 ```
