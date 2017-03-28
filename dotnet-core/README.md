@@ -11,7 +11,7 @@ dotnet restore
 Run application:
 ----------------
 ```
-dotnet run
+dotnet run -c Release
 ```
 
 Server will be online @ http://localhost:5000
