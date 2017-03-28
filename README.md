@@ -2,33 +2,33 @@
 
 | Framework    | Max Throughput | Avg Latency | Transfer | 
 | ------------ | -------------: | ----------: | -------: |
-| Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
-| Light Java   | 1344512.65     | 2.36ms      | 169.25MB |
-| ActFramework | 945429.13      | 2.22ms      | 136.15MB |
-| Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
-| Vertx        | 803311.31     | 2.37ms       | 98.06MB  |
-| Node-uws     | 589924.44      |  7.22ms     | 28.69MB  |
-| Jooby/Undertow | 317385.05      |  4.31ms  | 45.70MB |
-| Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
-| Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
-| Spark        | 194553.83      |  13.85ms    | 32.47MB  |
-| Pippo-Jetty  | 178055.45      |  15.66ms    | 26.83MB  |
-| Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
-| Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
-| JFinal       | 139467.87      |  11.89ms    | 29.79MB  |
-| Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
-| RatPack        | 124700.70     | 13.45ms    | 10.82MB |
-| Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
-| Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
-| Baseio         | 50361.98      | 22.20ms    | 6.39MB   |
-| NinjaFramework | 47956.43      | 55.76ms    | 13.67MB |
-| Play 1         | 44491.87      | 10.73ms    | 18.75MB  |
-| Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
-| Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
-| Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
-| Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
-| Payra Micro        | 24768.69 | 118.86ms    | 3.50MB   |
-| WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
+| Go FastHttp  | 1,396,685.83     | 99.98ms     | 167.83MB |
+| Light Java   | 1,344,512.65     | 2.36ms      | 169.25MB |
+| ActFramework | 945,429.13      | 2.22ms      | 136.15MB |
+| Go Iris      | 828,035.66      | 5.77ms      | 112.92MB |
+| Vertx        | 803,311.31     | 2.37ms       | 98.06MB  |
+| Node-uws     | 589,924.44      |  7.22ms     | 28.69MB  |
+| Jooby/Undertow | 317,385.05      |  4.31ms  | 45.70MB |
+| Spring Boot Reactor | 243,240.17 | 7.44ms    | 17.86MB  |
+| Pippo-Undertow | 216,254.56     | 9.80ms     | 31.35MB  |
+| Spark        | 194,553.83      |  13.85ms    | 32.47MB  |
+| Pippo-Jetty  | 178,055.45      |  15.66ms    | 26.83MB  |
+| Play-Java    | 177,202.75      |  12.15ms    | 21.80MB  |
+| Go Http      | 170,313.02      |  15.01ms    | 20.95MB  |
+| JFinal       | 139,467.87      |  11.89ms    | 29.79MB  |
+| Akka-Http    | 132,157.96  | 12.21ms         | 19.54MB  |
+| RatPack        | 124,700.70     | 13.45ms    | 10.82MB |
+| Pippo-Tomcat   | 103,948.18     | 23.50ms    | 15.29MB  |
+| Bootique + Jetty/Jersey | 65,072.20 | 39.08ms | 11.17MB |
+| Baseio         | 50,361.98      | 22.20ms    | 6.39MB   |
+| NinjaFramework | 47,956.43      | 55.76ms    | 13.67MB |
+| Play 1         | 44,491.87      | 10.73ms    | 18.75MB  |
+| Spring Boot Undertow | 44,260.61 | 38.94ms   | 6.42MB   |
+| Nodejs Express | 42,443.34     | 22.30ms     | 9.31MB   |
+| Dropwizard     | 33,819.90     | 98.78ms     | 3.23MB  |
+| Spring Boot Tomcat | 33,086.22 | 82.93ms     | 3.98MB   |
+| Payra Micro        | 24,768.69 | 118.86ms    | 3.50MB   |
+| WildFly Swarm     | 21,541.07  | 59.77ms     | 2.83MB   |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
