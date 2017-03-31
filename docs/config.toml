@@ -48,7 +48,7 @@ googleAnalytics = ""
 [[menu.main]]
 	name   = "Introduction"
 	url    = "/index.html"
-	weight = 0
+	weight = 5
 
 [[menu.main]]
 	name   = "Specification"
@@ -67,13 +67,13 @@ googleAnalytics = ""
 	weight = 30
 
 [[menu.main]]
-	name   = "Performance"
-	url    = "performance/"
+	name   = "Benchmark"
+	url    = "Benchmark/"
 	weight = 40
 
 [[menu.main]]
-	name   = "Tools"
-	url    = "tools/"
+	name   = "Tool"
+	url    = "tool/"
 	weight = 50
 
 [[menu.main]]
