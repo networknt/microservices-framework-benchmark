@@ -8,9 +8,10 @@
 | Go Iris      | Go         | 828,035.66      | 5.77ms      | 112.92MB |
 | Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | Node/C++   | 589,924.44      |  7.22ms     | 28.69MB  |
-| Jooby/Undertow | Java     | 317,385.05      |  4.31ms  | 45.70MB |
-| Spring Boot Reactor | Java | 243,240.17 | 7.44ms    | 17.86MB  |
-| Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB  |
+| Dotnet       | .Net       | 486,216.93      |  2.93ms     | 57.03MB  |
+| Jooby/Undertow | Java     | 317,385.05      |  4.31ms     | 45.70MB  |
+| Spring Boot Reactor | Java | 243,240.17     | 7.44ms      | 17.86MB  |
+| Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB    |
 | Spark        | Java       | 194,553.83      |  13.85ms    | 32.47MB  |
 | Pippo-Jetty  | Java       | 178,055.45      |  15.66ms    | 26.83MB  |
 | Play-Java    | Java       | 177,202.75      |  12.15ms    | 21.80MB  |
@@ -669,5 +670,25 @@ Running 30s test @ http://localhost:8080
   9550240 requests in 30.09s, 1.34GB read
 Requests/sec: 317385.05
 Transfer/sec:     45.70MB
+
+```
+
+@JesHansen submitted a pull request to add dotnet core and here is the result.
+ 
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:5000 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:5000
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.93ms    2.51ms  45.13ms   85.78%
+    Req/Sec   122.23k    10.92k  150.99k    72.25%
+  Latency Distribution
+     50%    2.35ms
+     75%    3.77ms
+     90%    5.51ms
+     99%   12.84ms
+  14599887 requests in 30.03s, 1.67GB read
+Requests/sec: 486216.93
+Transfer/sec:     57.03MB
 
 ```
