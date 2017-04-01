@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Specification - Microservices Framework Benchmark</title>
+    <meta name="generator" content="Hugo 0.19" />
+
+    
+    <meta name="description" content="Microservices Framework Benchmark Docs">
+    
+    <link rel="canonical" href="https://networknt.github.io/microservices-framework-benchmark/specification/">
+    
+    <meta name="author" content="Steve Hu">
+    
+
+    <meta property="og:url" content="https://networknt.github.io/microservices-framework-benchmark/specification/">
+    <meta property="og:title" content="Microservices Framework Benchmark">
+    <meta property="og:image" content="https://networknt.github.io/microservices-framework-benchmark/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Microservices Framework Benchmark">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://networknt.github.io/microservices-framework-benchmark/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://networknt.github.io/microservices-framework-benchmark/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://networknt.github.io/microservices-framework-benchmark/fonts/icon.eot');
+        src: url('https://networknt.github.io/microservices-framework-benchmark/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://networknt.github.io/microservices-framework-benchmark/fonts/icon.woff')
+               format('woff'),
+             url('https://networknt.github.io/microservices-framework-benchmark/fonts/icon.ttf')
+               format('truetype'),
+             url('https://networknt.github.io/microservices-framework-benchmark/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://networknt.github.io/microservices-framework-benchmark/stylesheets/application.css">
+    <link rel="stylesheet" href="https://networknt.github.io/microservices-framework-benchmark/stylesheets/temporary.css">
+    <link rel="stylesheet" href="https://networknt.github.io/microservices-framework-benchmark/stylesheets/palettes.css">
+    <link rel="stylesheet" href="https://networknt.github.io/microservices-framework-benchmark/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="https://networknt.github.io/microservices-framework-benchmark/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-red palette-accent-teal">
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Specification
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/stevehu" title="@stevehu on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/networknt/microservices-framework-benchmark" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="https://networknt.github.io/microservices-framework-benchmark/images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>Microservices Framework Benchmark <span class="version">1.0.0</span></strong>
+        
+          <br>
+          networknt/microservices-framework-benchmark
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/networknt/microservices-framework-benchmark/archive/master.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/networknt/microservices-framework-benchmark/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Introduction" href="https://networknt.github.io/microservices-framework-benchmark/index.html">
+	
+	Introduction
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a class="current" title="Specification" href="https://networknt.github.io/microservices-framework-benchmark/specification/">
+	
+	Specification
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Environment" href="https://networknt.github.io/microservices-framework-benchmark/environment/">
+	
+	Environment
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Implementation" href="https://networknt.github.io/microservices-framework-benchmark/implementation/">
+	
+	Implementation
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Benchmark" href="https://networknt.github.io/microservices-framework-benchmark/Benchmark/">
+	
+	Benchmark
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Tool" href="https://networknt.github.io/microservices-framework-benchmark/tool/">
+	
+	Tool
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Issues &amp; Help" href="https://github.com/networknt/microservices-framework-benchmark/issues">
+	
+	Issues &amp; Help
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Roadmap" href="https://networknt.github.io/microservices-framework-benchmark/roadmap/">
+	
+	Roadmap
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="https://www.apache.org/licenses/LICENSE-2.0">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">The author</span>
+        
+        <ul>
+          
+
+          
+          <li>
+            <a href="https://github.com/stevehu" target="_blank" title="@stevehu on GitHub">
+              @stevehu on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:stevehu@gmail.com" title="Email of stevehu@gmail.com">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Specification </h1>
+
+			
+
+<p>We invite application developers and framework authors to help us expending the coverage and implementing missing test scenarios. The following are specifications for each of test scenarios and OpenAPI specs can
+be found in <a href="https://github.com/networknt/swagger/tree/master/benchmark">swagger</a> repo. The first part of
+the scenarios are borrowed from <a href="https://github.com/TechEmpower/FrameworkBenchmarks">TechEmpower</a> and the rest of the scenarios are desgined for service to service calls.</p>
+
+<p>As there are many test scenarios, we don&rsquo;t expect every framework to implement all of them. In a long run
+the gap will be filled eventually. All dependencies including database, wrk will be supplied in docker
+containers and services will be tested in docker containers for offical result. This dramatically simply
+the development environment and enable everyone to run the tests on his/her own computer.</p>
+
+<h2 id="general-requirements">General requirements</h2>
+
+<p>The following requirements apply to all test scenaios below.</p>
+
+<ul>
+<li>All test implementations should be production-grade. The particulars of this will vary by framework and platform, but the general sentiment is that the code and configuration should be suitable for a production deployment. The word should is used here because production-grade is our goal, but we don&rsquo;t want this to be a roadblock. If you&rsquo;re submitting a new test and uncertain whether your code is production-grade, submit it anyway and then solicit input from other subject-matter experts.</li>
+<li>All test implementations must disable all disk logging. For many reasons, we expect all tests will run without writing logs to disk. Most importantly, the volume of requests is sufficiently high to fill up disks even with only a single line written to disk per request. Please disable all forms of disk logging. We recommend but do not require disabling console logging as well.</li>
+<li>Specific characters and character case matter. Assume the client consuming your service&rsquo;s JSON responses will be using a case-sensitive language such as JavaScript. In other words, if a test specifies that a map&rsquo;s key is id, use id. Do not use Id or ID. This strictness is required not only because it&rsquo;s sensible but also because our automated validation checks are picky.</li>
+<li>All test types require Server and Date HTTP response headers. We expect the Server header to be whatever is normal for the platform or framework. If the framework does not normally provide a Server response header, we nevertheless require that you provide one as this roughly normalizes network load across all implementations. For Date, we expect that the rendered date be accurate. However, it does not need to be rendered from the system clock to a byte buffer for each request. Re-rendering once per second is an acceptable tactical optimization (and is an optimization baked into many frameworks).</li>
+<li>Requests will be sent using HTTP and HTTPS pipelining. HTTP/2 can be used for both HTTP and HTTPS if the platform supports it.</li>
+</ul>
+
+<h2 id="scenario-1-text">Scenario 1: Text</h2>
+
+<p>This test is an exercise of the request-routing fundamentals only, designed to demonstrate the raw throughput and latency of high-performance platforms. The response payload is still small, meaning good performance is still necessary in order to saturate the network of the test environment.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<ul>
+<li><p>The endpoints should be implemented in API A</p></li>
+
+<li><p>API A port number is 7001 for HTPP and 7441 for HTTPS</p></li>
+
+<li><p>The recommended URI for HTTP is <strong>/text</strong></p></li>
+
+<li><p>The recommended URI for HTTPS is <strong>/tls/text</strong></p></li>
+
+<li><p>The response content type must be set to <strong>text/plain</strong></p></li>
+
+<li><p>The response body must be <strong>Hello, World!</strong></p></li>
+
+<li><p>This test is not intended to exercise the allocation of memory or instantiation of objects. Therefore it is acceptable but not required to re-use a single buffer for the response text (Hello, World!). However, the response must be fully composed from the response text and response headers within the scope of each request and it is not acceptable to store the entire payload of the response, or an unnaturally large subset of the response, headers inclusive, as a pre-rendered buffer. &ldquo;Buffer&rdquo; here refers to a byte array, byte buffer, character array, character buffer, string, or string-like data structure. The spirit of the test is to require the construction of the HTTP response as is typically done by a framework or platform via concatenation of strings or similar. For example, pre-rendering a buffer with <strong>HTTP/1.1 200 OK<cr>Content-length: 15<cr>Server: Example<cr></strong> would not be acceptable.</p></li>
+
+<li><p>The response headers must include either Content-Length or Transfer-Encoding.</p></li>
+
+<li><p>The response headers must include Server and Date.</p></li>
+
+<li><p>gzip compression is not permitted.</p></li>
+
+<li><p>Server support for HTTP Keep-Alive is strongly encouraged but not required.</p></li>
+
+<li><p>Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.</p></li>
+
+<li><p>If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.</p></li>
+
+<li><p>The request handler will be exercised using GET requests.</p></li>
+</ul>
+
+<h3 id="example-request">Example request</h3>
+
+<pre><code>GET /text HTTP/1.1
+Host: www.example.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) Gecko/20130501 Firefox/30.0 AppleWebKit/600.00 Chrome/30.0.0000.0 Trident/10.0 Safari/600.00
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Connection: keep-alive
+</code></pre>
+
+<h3 id="example-response">Example response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Length: 15
+Content-Type: text/plain; charset=UTF-8
+Server: Example
+Date: Wed, 17 Apr 2013 12:00:00 GMT
+
+Hello, World!
+</code></pre>
+
+<h2 id="scenario-2-chain-text">Scenario 2: Chain Text</h2>
+
+<p>This test is an implementation of microservices chain design pattern. A calls B, B calls C and the returned text values will be concat together. It is designed to demostrate raw communication efficiency between client and server.</p>
+
+<h3 id="requirements-1">Requirements</h3>
+
+<ul>
+<li><p>The endpoints should be implemented in API A, B and C</p></li>
+
+<li><p>API A http port 7001 and https port 7441</p></li>
+
+<li><p>API B http port 7002 and https port 7442</p></li>
+
+<li><p>API C http port 7003 and https port 7443</p></li>
+
+<li><p>The recommended endpoint for http is <strong>/chain/text</strong> for each API</p></li>
+
+<li><p>The recommanded endpoint for https is <strong>/tls/chain/text</strong> for each API</p></li>
+
+<li><p>The response content type must be set to <strong>text/plain</strong> for all endpoints</p></li>
+
+<li><p>The response body for API A is <strong>A OK!</strong></p></li>
+
+<li><p>The response body for API B is <strong>B OK!</strong></p></li>
+
+<li><p>The response body for API C is <strong>C OK!</strong></p></li>
+
+<li><p>The text can be buffered you cannot buffer the entire payload</p></li>
+
+<li><p>The response headers must include either Content-Length or Transfer-Encoding.</p></li>
+
+<li><p>The response headers must include Server and Date.</p></li>
+
+<li><p>gzip compression is not permitted.</p></li>
+
+<li><p>Server support for HTTP Keep-Alive is strongly encouraged but not required.</p></li>
+
+<li><p>Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.</p></li>
+
+<li><p>If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.</p></li>
+
+<li><p>The request handler for API A will be exercised using GET request.</p></li>
+
+<li><p>The request handler for API B will be exercised using GET request.</p></li>
+
+<li><p>The request handler for API C will be exercised using POST request. Body is &ldquo;C OK!&rdquo; and return the body in response.</p></li>
+
+<li><p>API B will concat &ldquo;B OK!&rdquo; with returned value from API C &ldquo;C OK!&rdquo; and return &ldquo;B OK!C OK!&rdquo;</p></li>
+
+<li><p>API A will concat &ldquo;A OK!&rdquo; with &ldquo;B OK!C OK!&rdquo; returned from API B. It returns &ldquo;A OK!B OK!C OK!&rdquo;</p></li>
+
+<li><p>If API A **/tls/chain/text is called, then all subsequent calls will use tls endpoint with TLS enabled.</p></li>
+</ul>
+
+<h2 id="sceanrio-3-aggregator-text">Sceanrio 3: Aggregator Text</h2>
+
+<p>This test is an implementation of microservices aggregator design pattern. A calls B and C in parallel. The return values from B and C will be concat together and then concat with &ldquo;A OK!&rdquo;. It is designed to demostrate raw communication efficiency when calling multiple services in parallel.</p>
+
+<h3 id="requirements-2">Requirements</h3>
+
+<ul>
+<li><p>The endpoints should be implemented in API A, B and C</p></li>
+
+<li><p>API A http port 7001 and https port 7441</p></li>
+
+<li><p>API B http port 7002 and https port 7442</p></li>
+
+<li><p>API C http port 7003 and https port 7443</p></li>
+
+<li><p>The recommended endpoint for http is <strong>/aggregator/text</strong> for each API</p></li>
+
+<li><p>The recommanded endpoint for https is <strong>/tls/aggregator/text</strong> for each API</p></li>
+
+<li><p>The response content type must be set to <strong>text/plain</strong> for all endpoints</p></li>
+
+<li><p>The response body for API A is <strong>A OK!</strong></p></li>
+
+<li><p>The response body for API B is <strong>B OK!</strong></p></li>
+
+<li><p>The response body for API C is <strong>C OK!</strong></p></li>
+
+<li><p>The text can be buffered you cannot buffer the entire payload</p></li>
+
+<li><p>The response headers must include either Content-Length or Transfer-Encoding.</p></li>
+
+<li><p>The response headers must include Server and Date.</p></li>
+
+<li><p>gzip compression is not permitted.</p></li>
+
+<li><p>Server support for HTTP Keep-Alive is strongly encouraged but not required.</p></li>
+
+<li><p>Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.</p></li>
+
+<li><p>If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.</p></li>
+
+<li><p>The request handler for API A will be exercised using GET request.</p></li>
+
+<li><p>The request handler for API B will be exercised using GET request.</p></li>
+
+<li><p>The request handler for API C will be exercised using POST request. Body is &ldquo;C OK!&rdquo; and return the body in response.</p></li>
+
+<li><p>API B result and API C result will be concat together without orders. Then &ldquo;A OK!&rdquo; will concat with the above result and return to the caller.</p></li>
+
+<li><p>API A will will return &ldquo;A OK!B OK!C OK!&rdquo; or &ldquo;A OK!C OK!B OK!&rdquo;.</p></li>
+
+<li><p>If API A **/tls/aggregator/text is called, then all subsequent calls will use tls endpoint with TLS enabled.</p></li>
+</ul>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 Released under the MIT license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="https://networknt.github.io/microservices-framework-benchmark/" title="Introduction">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Introduction
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'https:\/\/networknt.github.io\/microservices-framework-benchmark\/';
+      var repo_id  = 'networknt\/microservices-framework-benchmark';
+    
+    </script>
+
+    <script src="https://networknt.github.io/microservices-framework-benchmark/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Specifications on Microservices Framework Benchmark</title>
+    <link>https://networknt.github.io/microservices-framework-benchmark/specification/index.xml</link>
+    <description>Recent content in Specifications on Microservices Framework Benchmark</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Fri, 31 Mar 2017 11:58:32 -0400</lastBuildDate>
+    <atom:link href="https://networknt.github.io/microservices-framework-benchmark/specification/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Specification</title>
+      <link>https://networknt.github.io/microservices-framework-benchmark/specification/</link>
+      <pubDate>Fri, 31 Mar 2017 11:58:32 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/microservices-framework-benchmark/specification/</guid>
+      <description>
+
+&lt;p&gt;We invite application developers and framework authors to help us expending the coverage and implementing missing test scenarios. The following are specifications for each of test scenarios and OpenAPI specs can
+be found in &lt;a href=&#34;https://github.com/networknt/swagger/tree/master/benchmark&#34;&gt;swagger&lt;/a&gt; repo. The first part of
+the scenarios are borrowed from &lt;a href=&#34;https://github.com/TechEmpower/FrameworkBenchmarks&#34;&gt;TechEmpower&lt;/a&gt; and the rest of the scenarios are desgined for service to service calls.&lt;/p&gt;
+
+&lt;p&gt;As there are many test scenarios, we don&amp;rsquo;t expect every framework to implement all of them. In a long run
+the gap will be filled eventually. All dependencies including database, wrk will be supplied in docker
+containers and services will be tested in docker containers for offical result. This dramatically simply
+the development environment and enable everyone to run the tests on his/her own computer.&lt;/p&gt;
+
+&lt;h2 id=&#34;general-requirements&#34;&gt;General requirements&lt;/h2&gt;
+
+&lt;p&gt;The following requirements apply to all test scenaios below.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All test implementations should be production-grade. The particulars of this will vary by framework and platform, but the general sentiment is that the code and configuration should be suitable for a production deployment. The word should is used here because production-grade is our goal, but we don&amp;rsquo;t want this to be a roadblock. If you&amp;rsquo;re submitting a new test and uncertain whether your code is production-grade, submit it anyway and then solicit input from other subject-matter experts.&lt;/li&gt;
+&lt;li&gt;All test implementations must disable all disk logging. For many reasons, we expect all tests will run without writing logs to disk. Most importantly, the volume of requests is sufficiently high to fill up disks even with only a single line written to disk per request. Please disable all forms of disk logging. We recommend but do not require disabling console logging as well.&lt;/li&gt;
+&lt;li&gt;Specific characters and character case matter. Assume the client consuming your service&amp;rsquo;s JSON responses will be using a case-sensitive language such as JavaScript. In other words, if a test specifies that a map&amp;rsquo;s key is id, use id. Do not use Id or ID. This strictness is required not only because it&amp;rsquo;s sensible but also because our automated validation checks are picky.&lt;/li&gt;
+&lt;li&gt;All test types require Server and Date HTTP response headers. We expect the Server header to be whatever is normal for the platform or framework. If the framework does not normally provide a Server response header, we nevertheless require that you provide one as this roughly normalizes network load across all implementations. For Date, we expect that the rendered date be accurate. However, it does not need to be rendered from the system clock to a byte buffer for each request. Re-rendering once per second is an acceptable tactical optimization (and is an optimization baked into many frameworks).&lt;/li&gt;
+&lt;li&gt;Requests will be sent using HTTP and HTTPS pipelining. HTTP/2 can be used for both HTTP and HTTPS if the platform supports it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;scenario-1-text&#34;&gt;Scenario 1: Text&lt;/h2&gt;
+
+&lt;p&gt;This test is an exercise of the request-routing fundamentals only, designed to demonstrate the raw throughput and latency of high-performance platforms. The response payload is still small, meaning good performance is still necessary in order to saturate the network of the test environment.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The endpoints should be implemented in API A&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API A port number is 7001 for HTPP and 7441 for HTTPS&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommended URI for HTTP is &lt;strong&gt;/text&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommended URI for HTTPS is &lt;strong&gt;/tls/text&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response content type must be set to &lt;strong&gt;text/plain&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body must be &lt;strong&gt;Hello, World!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;This test is not intended to exercise the allocation of memory or instantiation of objects. Therefore it is acceptable but not required to re-use a single buffer for the response text (Hello, World!). However, the response must be fully composed from the response text and response headers within the scope of each request and it is not acceptable to store the entire payload of the response, or an unnaturally large subset of the response, headers inclusive, as a pre-rendered buffer. &amp;ldquo;Buffer&amp;rdquo; here refers to a byte array, byte buffer, character array, character buffer, string, or string-like data structure. The spirit of the test is to require the construction of the HTTP response as is typically done by a framework or platform via concatenation of strings or similar. For example, pre-rendering a buffer with &lt;strong&gt;HTTP/1.1 200 OK&lt;cr&gt;Content-length: 15&lt;cr&gt;Server: Example&lt;cr&gt;&lt;/strong&gt; would not be acceptable.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include either Content-Length or Transfer-Encoding.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include Server and Date.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;gzip compression is not permitted.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP Keep-Alive is strongly encouraged but not required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&amp;rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler will be exercised using GET requests.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;example-request&#34;&gt;Example request&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /text HTTP/1.1
+Host: www.example.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) Gecko/20130501 Firefox/30.0 AppleWebKit/600.00 Chrome/30.0.0000.0 Trident/10.0 Safari/600.00
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Connection: keep-alive
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;example-response&#34;&gt;Example response&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;HTTP/1.1 200 OK
+Content-Length: 15
+Content-Type: text/plain; charset=UTF-8
+Server: Example
+Date: Wed, 17 Apr 2013 12:00:00 GMT
+
+Hello, World!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;scenario-2-chain-text&#34;&gt;Scenario 2: Chain Text&lt;/h2&gt;
+
+&lt;p&gt;This test is an implementation of microservices chain design pattern. A calls B, B calls C and the returned text values will be concat together. It is designed to demostrate raw communication efficiency between client and server.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements-1&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The endpoints should be implemented in API A, B and C&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API A http port 7001 and https port 7441&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API B http port 7002 and https port 7442&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API C http port 7003 and https port 7443&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommended endpoint for http is &lt;strong&gt;/chain/text&lt;/strong&gt; for each API&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommanded endpoint for https is &lt;strong&gt;/tls/chain/text&lt;/strong&gt; for each API&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response content type must be set to &lt;strong&gt;text/plain&lt;/strong&gt; for all endpoints&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API A is &lt;strong&gt;A OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API B is &lt;strong&gt;B OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API C is &lt;strong&gt;C OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The text can be buffered you cannot buffer the entire payload&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include either Content-Length or Transfer-Encoding.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include Server and Date.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;gzip compression is not permitted.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP Keep-Alive is strongly encouraged but not required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&amp;rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API A will be exercised using GET request.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API B will be exercised using GET request.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API C will be exercised using POST request. Body is &amp;ldquo;C OK!&amp;rdquo; and return the body in response.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API B will concat &amp;ldquo;B OK!&amp;rdquo; with returned value from API C &amp;ldquo;C OK!&amp;rdquo; and return &amp;ldquo;B OK!C OK!&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API A will concat &amp;ldquo;A OK!&amp;rdquo; with &amp;ldquo;B OK!C OK!&amp;rdquo; returned from API B. It returns &amp;ldquo;A OK!B OK!C OK!&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If API A **/tls/chain/text is called, then all subsequent calls will use tls endpoint with TLS enabled.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;sceanrio-3-aggregator-text&#34;&gt;Sceanrio 3: Aggregator Text&lt;/h2&gt;
+
+&lt;p&gt;This test is an implementation of microservices aggregator design pattern. A calls B and C in parallel. The return values from B and C will be concat together and then concat with &amp;ldquo;A OK!&amp;rdquo;. It is designed to demostrate raw communication efficiency when calling multiple services in parallel.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements-2&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The endpoints should be implemented in API A, B and C&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API A http port 7001 and https port 7441&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API B http port 7002 and https port 7442&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API C http port 7003 and https port 7443&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommended endpoint for http is &lt;strong&gt;/aggregator/text&lt;/strong&gt; for each API&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The recommanded endpoint for https is &lt;strong&gt;/tls/aggregator/text&lt;/strong&gt; for each API&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response content type must be set to &lt;strong&gt;text/plain&lt;/strong&gt; for all endpoints&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API A is &lt;strong&gt;A OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API B is &lt;strong&gt;B OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response body for API C is &lt;strong&gt;C OK!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The text can be buffered you cannot buffer the entire payload&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include either Content-Length or Transfer-Encoding.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The response headers must include Server and Date.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;gzip compression is not permitted.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP Keep-Alive is strongly encouraged but not required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server support for HTTP/1.1 pipelining is assumed. Servers that do not support pipelining may be included but should downgrade gracefully. If you are unsure about your server&amp;rsquo;s behavior with pipelining, test with the wrk load generation tool used in our tests.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If HTTP Keep-Alive is enabled, no maximum Keep-Alive timeout is specified by this test.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API A will be exercised using GET request.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API B will be exercised using GET request.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The request handler for API C will be exercised using POST request. Body is &amp;ldquo;C OK!&amp;rdquo; and return the body in response.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API B result and API C result will be concat together without orders. Then &amp;ldquo;A OK!&amp;rdquo; will concat with the above result and return to the caller.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API A will will return &amp;ldquo;A OK!B OK!C OK!&amp;rdquo; or &amp;ldquo;A OK!C OK!B OK!&amp;rdquo;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If API A **/tls/aggregator/text is called, then all subsequent calls will use tls endpoint with TLS enabled.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
