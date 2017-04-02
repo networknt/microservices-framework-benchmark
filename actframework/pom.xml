@@ -17,7 +17,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <act.version>1.0.2</act.version>
+    <act.version>1.0.7-SNAPSHOT</act.version>
     <app.entry>benchmark.ActBenchmark</app.entry>
   </properties>
 
