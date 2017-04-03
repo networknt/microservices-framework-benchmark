@@ -1,0 +1,4 @@
+obj/
+bin/
+*.nuget.g.props
+*.nuget.g.targets
