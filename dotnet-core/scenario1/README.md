@@ -1,11 +1,11 @@
 Routing in ASP.NET Core
 =======================
 
-This is a simple implementation of the spec from https://networknt.github.io/microservices-framework-benchmark/specification/
+This is a simple implementation scenario 1 of the spec from https://networknt.github.io/microservices-framework-benchmark/specification/
 
-In the 'Hello World!' app sample found in the hello-world folder we focused on a minimal ASP.NET Core app that only did the bare mininum in order to return 'Hello World!' to the caller. This meant that we could do away with large parts of that is traditionally present in ASP.NET MVC applications. One of the things we sacrificed on the alter of simplicity was the ability to do routing (in the traditional MVC sense).
+In the 'Hello World!' app sample found in the hello-world folder we focused on a minimal ASP.NET Core app that only did the bare mininum in order to return 'Hello World!' to the caller. This meant that we could do away with large parts of what is traditionally present in ASP.NET MVC applications. One of the things we sacrificed on the alter of simplicity was the ability to do routing (in the traditional MVC sense).
 
-In this sample we look at a slightly more realistic scenario where we still use the Kestrel web server from ASP.NET Core, but this time we use more of the MVC framework this time. This allows us to use controllers with a Routing attribute which describes what requests whould be handled where. Two controllers are present, one which handles the http protocol and one which handles https.
+In this sample we look at a slightly more realistic scenario where we still use the Kestrel web server from ASP.NET Core, but this time we use more of the MVC framework. This allows us to use controllers with a Routing attribute which describes what requests should be handled where. Two controllers are present, one which handles the http protocol and one which handles https.
 
 
 Restore dependencies:

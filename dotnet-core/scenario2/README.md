@@ -1,11 +1,11 @@
 Chained calls in ASP.NET Core
 =======================
 
-This is a simple implementation of the spec from https://networknt.github.io/microservices-framework-benchmark/specification/
+This is a simple implementation of scenario 1 of the spec from https://networknt.github.io/microservices-framework-benchmark/specification/
 
-In the 'Hello World!' app sample found in the hello-world folder we focused on a minimal ASP.NET Core app that only did the bare mininum in order to return 'Hello World!' to the caller. This meant that we could do away with large parts of that is traditionally present in ASP.NET MVC applications. One of the things we sacrificed on the alter of simplicity was the ability to do routing (in the traditional MVC sense).
+In the 'Hello World!' app sample found in the hello-world folder we focused on a minimal ASP.NET Core app that only did the bare mininum in order to return 'Hello World!' to the caller. This meant that we could do away with large parts of what is traditionally present in ASP.NET MVC applications. One of the things we sacrificed on the alter of simplicity was the ability to do routing (in the traditional MVC sense).
 
-In the scenario1 app sample we then investigated how a slightly more realistic sample which used MVC routing could look like.
+In the scenario 1 app sample we then investigated how a slightly more realistic sample which used MVC routing could look like.
 
 In this sample we look at how ASP.NET Core handles chaining calls from one service to another. We again use the built-in Kestrel web server from ASP.NET Core, again with the MVC framework. The three services run as 3 completely separated processes, only sharing the underlaying .NET framework. This means some code duplication is found, but it makes each service a more natural self-contained entity. The shared .NET framework can sometimes be seen in this sample. Since 3 applications are running simultaneously, they have to share the available threadpool from the .NET framework. Under heavy loads this will be overloaded and you'll see some connections failing, though you should not see any crashes.
 
