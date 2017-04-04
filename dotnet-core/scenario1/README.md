@@ -7,8 +7,6 @@ In the 'Hello World!' app sample found in the hello-world folder we focused on a
 
 In this sample we look at a slightly more realistic scenario where we still use the Kestrel web server from ASP.NET Core, but this time we use more of the MVC framework this time. This allows us to use controllers with a Routing attribute which describes what requests whould be handled where. Two controllers are present, one which handles the http protocol and one which handles https.
 
-Some examples of how to do error handling is also present, but mostly not implemented, since this is still a demo app and we don't really have an appropriate place to store logs.
-
 
 Restore dependencies:
 ------

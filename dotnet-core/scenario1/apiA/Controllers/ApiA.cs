@@ -2,7 +2,7 @@
 
 namespace ApiA.Controllers
 {
-  public class ApiA : Controller
+  public abstract class ApiA : Controller
   {
     [HttpGet]
     public string Get()
