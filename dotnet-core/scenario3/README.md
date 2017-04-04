@@ -1,4 +1,4 @@
-Chained calls in ASP.NET Core
+Aggregated concurrent calls in ASP.NET Core
 =======================
 
 This is a simple implementation of scenario 3 of the spec from https://networknt.github.io/microservices-framework-benchmark/specification/
