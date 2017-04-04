@@ -11,6 +11,7 @@ In this sample we look at how ASP.NET Core handles chaining calls from one servi
 
 Error handling is indicated in the code with comments where nescessary. In this example any errors are simply logged in each console.
 
+Each service is configured in it's appsettings.json file. Here you can change what URLs are used for the service as well as where to find the next service in the chain. The default is localhost, making all three services run on the same machine. It is straightforward to put the services on different machines, all you have to change is the endpoints in the appsettings.json files for apiA and apiB.
 
 
 Restore dependencies:
