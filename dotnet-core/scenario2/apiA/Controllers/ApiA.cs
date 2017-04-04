@@ -1,10 +1,11 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace ApiA.Controllers
 {
-  public class ApiA : Controller
+  public abstract class ApiA : Controller
   {
     protected async Task<IActionResult> BaseGet(string nexturl)
     {
@@ -13,18 +14,32 @@ namespace ApiA.Controllers
 
     async Task<string> Next(string url)
     {
-      // This is demo code, so we don't bother with a real signed certificate.
-      using (var sslHandler = new HttpClientHandler())
+      // This is demo code, so we don't bother with a real signed certificate. Please never do this in a real app!
+      using (var bypassSelfSignedCertError = new HttpClientHandler())
       {
-        sslHandler.ServerCertificateCustomValidationCallback = (msg, cert, chain, errors) => { return true; };
-        using (var client = new HttpClient(sslHandler))
+        //All certificates are considered valid! Carry on! :D
+        bypassSelfSignedCertError.ServerCertificateCustomValidationCallback = (msg, cert, chain, errors) => { return true; };
+
+        using (var client = new HttpClient(bypassSelfSignedCertError))
         {
-          var response = await client.GetAsync(url);          
-          response.EnsureSuccessStatusCode();
-          return await response.Content.ReadAsStringAsync();
+          HttpResponseMessage response;
+          try
+          {
+            response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+          }
+          catch (Exception e)
+          {
+            while (e.InnerException != null)
+              e = e.InnerException;
+
+            // This is where you would do error handling. Here we we just print to the console.
+            Console.WriteLine(e.Message);
+            throw;
+          }
         }
       }
     }
-
   }
 }
