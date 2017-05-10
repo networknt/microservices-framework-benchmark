@@ -12,6 +12,7 @@
 | Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | Node/C++   | 589,924.44      |  7.22ms     | 28.69MB  |
 | Dotnet       | .Net       | 486,216.93      |  2.93ms     | 57.03MB  |
+| SeedStack-Filter | Java   | 343416.33       | 4.41ms      | 51.42MB  |
 | Jooby/Undertow | Java     | 317,385.05      |  4.31ms     | 45.70MB  |
 | Spring Boot Reactor | Java | 243,240.17     | 7.44ms      | 17.86MB  |
 | Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB    |
@@ -21,9 +22,10 @@
 | Go Http      | Go         | 170,313.02      |  15.01ms    | 20.95MB  |
 | JFinal       | Java       | 139,467.87      |  11.89ms    | 29.79MB  |
 | Akka-Http    | Java       | 132,157.96  | 12.21ms         | 19.54MB  |
-| RatPack      | Java       | 124,700.70     | 13.45ms    | 10.82MB |
-| Pippo-Tomcat   | Java     | 103,948.18     | 23.50ms    | 15.29MB  |
-| Bootique + Jetty/Jersey | Java | 65,072.20 | 39.08ms | 11.17MB |
+| RatPack      | Java       | 124,700.70     | 13.45ms    | 10.82MB    |
+| Pippo-Tomcat   | Java     | 103,948.18     | 23.50ms    | 15.29MB    |
+| Bootique + Jetty/Jersey | Java | 65,072.20 | 39.08ms | 11.17MB       |
+| SeedStack-Jersey2 | Java  | 52310.11 |     |  26.88ms     | 11.87MB  |
 | Baseio         | Java    | 50,361.98      | 22.20ms    | 6.39MB   |
 | NinjaFramework | Java    | 47,956.43      | 55.76ms    | 13.67MB |
 | Play 1         | Java    | 44,491.87      | 10.73ms    | 18.75MB  |
@@ -693,5 +695,44 @@ Running 30s test @ http://localhost:5000
   14599887 requests in 30.03s, 1.67GB read
 Requests/sec: 486216.93
 Transfer/sec:     57.03MB
+
+```
+
+@adrienlauer submitted a pull request to add seedstack-filter and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.41ms    3.99ms  68.47ms   88.16%
+    Req/Sec    86.43k    10.63k  150.72k    74.27%
+  Latency Distribution
+     50%    3.44ms
+     75%    5.71ms
+     90%    8.79ms
+     99%   18.81ms
+  10336608 requests in 30.10s, 1.51GB read
+Requests/sec: 343416.33
+Transfer/sec:     51.42MB
+```
+
+@adrienlauer submitted a pull request to add seedstack-jersey2 and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    26.88ms   20.07ms 230.49ms   74.47%
+    Req/Sec    13.12k     3.14k   25.28k    75.38%
+  Latency Distribution
+     50%   22.35ms
+     75%   36.26ms
+     90%   53.21ms
+     99%   93.83ms
+  1574128 requests in 30.09s, 357.29MB read
+Requests/sec:  52310.11
+Transfer/sec:     11.87MB
 
 ```
