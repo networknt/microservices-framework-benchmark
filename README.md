@@ -25,7 +25,7 @@
 | RatPack      | Java       | 124,700.70     | 13.45ms    | 10.82MB    |
 | Pippo-Tomcat   | Java     | 103,948.18     | 23.50ms    | 15.29MB    |
 | Bootique + Jetty/Jersey | Java | 65,072.20 | 39.08ms | 11.17MB       |
-| SeedStack-Jersey2 | Java  | 52310.11 |     |  26.88ms     | 11.87MB  |
+| SeedStack-Jersey2 | Java  | 52310.11       |  26.88ms     | 11.87MB  |
 | Baseio         | Java    | 50,361.98      | 22.20ms    | 6.39MB   |
 | NinjaFramework | Java    | 47,956.43      | 55.76ms    | 13.67MB |
 | Play 1         | Java    | 44,491.87      | 10.73ms    | 18.75MB  |
