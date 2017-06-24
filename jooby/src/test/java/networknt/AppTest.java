@@ -28,6 +28,6 @@ public class AppTest {
         .assertThat()
         .body(equalTo("Hello World!"))
         .statusCode(200)
-        .contentType("text/html;charset=UTF-8");
+        .contentType("text/plain;charset=UTF-8");
   }
 }
