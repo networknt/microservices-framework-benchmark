@@ -12,8 +12,8 @@
 | Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | Node/C++   | 589,924.44      |  7.22ms     | 28.69MB  |
 | Dotnet       | .Net       | 486,216.93      |  2.93ms     | 57.03MB  |
+| Jooby/Undertow | Java     | 362018.07      |  3.95ms     | 47.99MB  |
 | SeedStack-Filter | Java   | 343416.33       | 4.41ms      | 51.42MB  |
-| Jooby/Undertow | Java     | 317,385.05      |  4.31ms     | 45.70MB  |
 | Spring Boot Reactor | Java | 243,240.17     | 7.44ms      | 17.86MB  |
 | Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB    |
 | Spark        | Java       | 194,553.83      |  13.85ms    | 32.47MB  |
@@ -734,5 +734,26 @@ Running 30s test @ http://localhost:8080
   1574128 requests in 30.09s, 357.29MB read
 Requests/sec:  52310.11
 Transfer/sec:     11.87MB
+
+```
+
+@jknack submitted a pull request with upgraded Jooby and here is the result. 
+
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.95ms    3.47ms  74.38ms   87.31%
+    Req/Sec    91.09k     9.20k  146.91k    75.65%
+  Latency Distribution
+     50%    3.18ms
+     75%    5.12ms
+     90%    7.52ms
+     99%   16.20ms
+  10896144 requests in 30.10s, 1.41GB read
+Requests/sec: 362018.07
+Transfer/sec:     47.99MB
 
 ```
