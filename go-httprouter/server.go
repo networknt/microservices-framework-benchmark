@@ -14,5 +14,5 @@ func main() {
     router := httprouter.New()
     router.GET("/", Hello)
 
-    log.Fatal(http.ListenAndServe(":8080", router))
+  http.ListenAndServe(":8080", router)
 }
