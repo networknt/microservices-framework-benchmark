@@ -33,6 +33,7 @@
 | Nodejs Express | Node     | 42,443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | Java     | 33,819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | Java | 33,086.22 | 82.93ms     | 3.98MB   |
+| Node-Loopback  | Node     | 32091.95  | 34.42ms     | 11.51MB  |
 | Payra Micro        | Java | 24,768.69 | 118.86ms    | 3.50MB   |
 | WildFly Swarm     | Java | 21,541.07  | 59.77ms     | 2.83MB   |
 
@@ -755,5 +756,25 @@ Running 30s test @ http://localhost:8080
   10896144 requests in 30.10s, 1.41GB read
 Requests/sec: 362018.07
 Transfer/sec:     47.99MB
+
+```
+
+@rpinaa submitted a pull request to add node-loopback and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    34.42ms   22.01ms 535.98ms   68.62%
+    Req/Sec     8.10k   578.42    11.03k    79.28%
+  Latency Distribution
+     50%   40.16ms
+     75%   59.88ms
+     90%    0.00us
+     99%    0.00us
+  965939 requests in 30.10s, 346.37MB read
+Requests/sec:  32091.95
+Transfer/sec:     11.51MB
 
 ```
