@@ -19,6 +19,7 @@
 | Spark        | Java       | 194,553.83      |  13.85ms    | 32.47MB  |
 | Pippo-Jetty  | Java       | 178,055.45      |  15.66ms    | 26.83MB  |
 | Play-Java    | Java       | 177,202.75      |  12.15ms    | 21.80MB  |
+| Go HttpRouter | Go        | 171852.31       | 14.12ms     | 21.14MB  |
 | Go Http      | Go         | 170,313.02      |  15.01ms    | 20.95MB  |
 | JFinal       | Java       | 139,467.87      |  11.89ms    | 29.79MB  |
 | Akka-Http    | Java       | 132,157.96  | 12.21ms         | 19.54MB  |
@@ -776,5 +777,25 @@ Running 30s test @ http://localhost:8080
   965939 requests in 30.10s, 346.37MB read
 Requests/sec:  32091.95
 Transfer/sec:     11.51MB
+
+```
+
+@rodrigomata submitted a pull request to add go-httprouter and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.12ms   14.25ms 171.89ms   87.11%
+    Req/Sec    43.19k     5.18k   61.08k    72.83%
+  Latency Distribution
+     50%    9.58ms
+     75%   18.79ms
+     90%   32.19ms
+     99%   67.61ms
+  5164540 requests in 30.05s, 635.36MB read
+Requests/sec: 171852.31
+Transfer/sec:     21.14MB
 
 ```
