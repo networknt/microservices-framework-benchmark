@@ -8,7 +8,7 @@ mvn package
 Run:
 
 ```
-java -jar target/vertx-fat.jar
+java -jar vertx/target/vertx-fat.jar
 ```
 
 Server will start on port 8080.
