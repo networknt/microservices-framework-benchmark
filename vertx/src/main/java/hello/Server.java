@@ -24,7 +24,6 @@ public class Server extends AbstractVerticle {
             req.response()
                 .putHeader(HttpHeaders.SERVER, "Vertx")
                 .putHeader(HttpHeaders.CONTENT_TYPE, "text/plain")
-                .putHeader(HttpHeaders.DATE, new Date().toString())
                 .end(TEXT);
         }).listen(8080);
     }
