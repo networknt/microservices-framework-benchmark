@@ -22,7 +22,7 @@ ActFramework is a fullstack Java web application framework with rich set of feat
 
 ### ActFramework version
 
-The application is created on ActFramework `0.4.0-SNAPSHOT`
+The application is created on ActFramework `1.4.14`
 
 ## Start the application
 
@@ -39,29 +39,29 @@ And you should see something like this:
  / ___ \ | (__ | |_  | |_) ||  __/| | | || (__ | | | || | | | | || (_| || |   |   < 
 /_/   \_\ \___| \__| |____/  \___||_| |_| \___||_| |_||_| |_| |_| \__,_||_|   |_|\_\
                                                                                     
-                                                 powered by ActFramework v0.4.0-7e4c
+                                                 powered by ActFramework r1.4.14-0239
 
- version: 0.0.1-SNAPSHOT
-base dir: /home/luog/p/greenlaw110/microservices-framework-benchmark/actframework/target/dist
-     pid: 16868
+ version: unknown
+scan pkg: benchmark
+base dir: /home/luog/tmp/p/microservices-framework-benchmark/actframework/target/dist
+     pid: 10748
  profile: prod
     mode: PROD
-   group: 
 
-     zen: Beautiful is better than ugly.
+     zen: Errors should never pass silently 
+          Unless explicitly silenced.
 
-10:41:23.624 [main] INFO  o.h.v.i.u.Version - HV000001: Hibernate Validator 5.1.3.Final
-10:41:23.693 [main] INFO  a.Act - loading application(s) ...
-10:41:23.696 [main] INFO  a.Act - App starting ....
-10:41:23.769 [main] WARN  a.c.AppConfig - Application secret key not set! You are in the dangerous zone!!!
-10:41:23.805 [main] WARN  a.a.DbServiceManager - DB service not initialized: No DB plugin found
-10:41:23.964 [main] WARN  a.m.MailerConfig - smtp host configuration not found, will use mock smtp to send email
-10:41:23.965 [main] WARN  a.c.AppConfig - host is not configured. Use localhost as hostname
-10:41:24.067 [main] INFO  a.Act - App[Act Benchmark] loaded in 371ms
-10:41:24.074 [main] INFO  o.xnio - XNIO version 3.3.6.Final
-10:41:24.086 [main] INFO  o.x.nio - XNIO NIO Implementation Version 3.3.6.Final
-10:41:24.172 [main] INFO  a.Act - network client hooked on port: 8080
-10:41:24.173 [main] INFO  a.b.a.RunApp - it takes 1394ms to start the app
+13:56:38.217 [main] INFO  a.Act - loading application(s) ...
+13:56:38.221 [main] INFO  a.a.App - App starting ....
+13:56:38.291 [main] WARN  a.c.AppConfig - Application secret key not set! You are in the dangerous zone!!!
+13:56:38.329 [main] WARN  a.a.DbServiceManager - DB service not initialized: No DB plugin found
+13:56:38.591 [main] WARN  a.m.MailerConfig - smtp host configuration not found, will use mock smtp to send email
+13:56:38.591 [main] WARN  a.c.AppConfig - host is not configured. Use localhost as hostname
+13:56:38.723 [main] INFO  a.a.App - App[Act Benchmark] loaded in 502ms
+13:56:38.739 [main] INFO  o.xnio - XNIO version 3.3.8.Final
+13:56:38.752 [main] INFO  o.x.nio - XNIO NIO Implementation Version 3.3.8.Final
+13:56:38.894 [main] INFO  a.Act - network client hooked on port: 8080
+13:56:38.895 [main] INFO  a.Act - it takes 2331ms to start the app
 ```
 
 ## Application endpoints
