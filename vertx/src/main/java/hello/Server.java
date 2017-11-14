@@ -22,10 +22,9 @@ public class Server extends AbstractVerticle {
     public void start() throws Exception {
         vertx.createHttpServer().requestHandler(req -> {
             req.response()
-                    .putHeader(HttpHeaders.SERVER, "Vertx")
-                    .putHeader(HttpHeaders.CONTENT_TYPE, "text/plain")
-                    .putHeader(HttpHeaders.DATE, new Date().toString())
-                    .end(TEXT);
+                .putHeader(HttpHeaders.SERVER, "Vertx")
+                .putHeader(HttpHeaders.CONTENT_TYPE, "text/plain")
+                .end(TEXT);
         }).listen(8080);
     }
 }
