@@ -1,33 +1,42 @@
+[Developer Chat](https://gitter.im/networknt/microservices-framework-benchmark) |
+[Documentation](https://networknt.github.io/microservices-framework-benchmark) |
+[Contribution Guide](CONTRIBUTING.md) |
 
 
-| Framework    | Max Throughput | Avg Latency | Transfer | 
-| ------------ | -------------: | ----------: | -------: |
-| Go FastHttp  | 1396685.83     | 99.98ms     | 167.83MB |
-| Light Java   | 1344512.65     | 2.36ms      | 169.25MB |
-| ActFramework | 945429.13      | 2.22ms      | 136.15MB |
-| Go Iris      | 828035.66      | 5.77ms      | 112.92MB |
-| Vertx        | 803311.31     | 2.37ms       | 98.06MB  |
-| Node-uws     | 589924.44      |  7.22ms     | 28.69MB  |
-| Spring Boot Reactor | 243240.17 | 7.44ms    | 17.86MB  |
-| Pippo-Undertow | 216254.56     | 9.80ms     | 31.35MB  |
-| Spark        | 194553.83      |  13.85ms    | 32.47MB  |
-| Pippo-Jetty  | 178055.45      |  15.66ms    | 26.83MB  |
-| Play-Java    | 177202.75      |  12.15ms    | 21.80MB  |
-| Go Http      | 170313.02      |  15.01ms    | 20.95MB  |
-| JFinal       | 139467.87      |  11.89ms    | 29.79MB  |
-| Akka-Http    | 132157.96  | 12.21ms         | 19.54MB  |
-| Jooby/Undertow | 130458.14      |  13.22ms  | 18.79MB |
-| RatPack        | 124700.70     | 13.45ms    | 10.82MB |
-| Pippo-Tomcat   | 103948.18     | 23.50ms    | 15.29MB  |
-| Bootique + Jetty/Jersey | 65072.20 | 39.08ms | 11.17MB |
-| NinjaFramework | 47956.43      | 55.76ms     | 13.67MB |
-| Play 1         | 44491.87      | 10.73ms    | 18.75MB  |
-| Spring Boot Undertow | 44260.61 | 38.94ms   | 6.42MB   |
-| Nodejs Express | 42443.34     | 22.30ms     | 9.31MB   |
-| Dropwizard     | 33819.90     | 98.78ms     | 3.23MB  |
-| Spring Boot Tomcat | 33086.22 | 82.93ms     | 3.98MB   |
-| Payra Micro        | 24768.69 | 118.86ms    | 3.50MB   |
-| WildFly Swarm     | 21541.07  | 59.77ms     | 2.83MB   |
+| Framework    | Language   | Max Throughput | Avg Latency | Transfer | 
+| ------------ | ---------: | -------------: | ----------: | -------: |
+| Go FastHttp  | Go         | 1,396,685.83     | 99.98ms     | 167.83MB |
+| Light Java   | Java       | 1,344,512.65     | 2.36ms      | 169.25MB |
+| ActFramework | Java       | 945,429.13      | 2.22ms      | 136.15MB |
+| Go Iris      | Go         | 828,035.66      | 5.77ms      | 112.92MB |
+| Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
+| Node-uws     | Node/C++   | 589,924.44      |  7.22ms     | 28.69MB  |
+| Dotnet       | .Net       | 486,216.93      |  2.93ms     | 57.03MB  |
+| Jooby/Undertow | Java     | 362018.07      |  3.95ms     | 47.99MB  |
+| SeedStack-Filter | Java   | 343416.33       | 4.41ms      | 51.42MB  |
+| Spring Boot Reactor | Java | 243,240.17     | 7.44ms      | 17.86MB  |
+| Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB    |
+| Spark        | Java       | 194,553.83      |  13.85ms    | 32.47MB  |
+| Pippo-Jetty  | Java       | 178,055.45      |  15.66ms    | 26.83MB  |
+| Play-Java    | Java       | 177,202.75      |  12.15ms    | 21.80MB  |
+| Go HttpRouter | Go        | 171852.31       | 14.12ms     | 21.14MB  |
+| Go Http      | Go         | 170,313.02      |  15.01ms    | 20.95MB  |
+| JFinal       | Java       | 139,467.87      |  11.89ms    | 29.79MB  |
+| Akka-Http    | Java       | 132,157.96  | 12.21ms         | 19.54MB  |
+| RatPack      | Java       | 124,700.70     | 13.45ms    | 10.82MB    |
+| Pippo-Tomcat   | Java     | 103,948.18     | 23.50ms    | 15.29MB    |
+| Bootique + Jetty/Jersey | Java | 65,072.20 | 39.08ms | 11.17MB       |
+| SeedStack-Jersey2 | Java  | 52310.11       |  26.88ms     | 11.87MB  |
+| Baseio         | Java    | 50,361.98      | 22.20ms    | 6.39MB   |
+| NinjaFramework | Java    | 47,956.43      | 55.76ms    | 13.67MB |
+| Play 1         | Java    | 44,491.87      | 10.73ms    | 18.75MB  |
+| Spring Boot Undertow | Java | 44,260.61 | 38.94ms   | 6.42MB   |
+| Nodejs Express | Node     | 42,443.34     | 22.30ms     | 9.31MB   |
+| Dropwizard     | Java     | 33,819.90     | 98.78ms     | 3.23MB  |
+| Spring Boot Tomcat | Java | 33,086.22 | 82.93ms     | 3.98MB   |
+| Node-Loopback  | Node     | 32091.95  | 34.42ms     | 11.51MB  |
+| Payra Micro        | Java | 24,768.69 | 118.86ms    | 3.50MB   |
+| WildFly Swarm     | Java | 21,541.07  | 59.77ms     | 2.83MB   |
 
 
 We are using pipeline.lua to generate more requests per second and the pipeline.lua is located
@@ -629,5 +638,164 @@ Running 30s test @ http://localhost:8080
   24114240 requests in 30.02s, 2.87GB read
 Requests/sec: 803311.31
 Transfer/sec:     98.06MB
+
+```
+
+@kevin-better submitted a pull request to add baseio and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.20ms   11.17ms 203.34ms   59.61%
+    Req/Sec    12.66k     1.85k   15.82k    77.92%
+  Latency Distribution
+     50%   22.16ms
+     75%   32.24ms
+     90%   37.42ms
+     99%   40.12ms
+  1511579 requests in 30.01s, 191.73MB read
+Requests/sec:  50361.98
+Transfer/sec:      6.39MB
+
+```
+
+@jknack submitted a pull request to upgrade jooby to version 1.1 and here is the result.
+
+```
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.31ms    3.32ms  48.26ms   78.72%
+    Req/Sec    79.88k     7.98k  152.40k    77.13%
+  Latency Distribution
+     50%    3.61ms
+     75%    5.74ms
+     90%    8.06ms
+     99%   16.61ms
+  9550240 requests in 30.09s, 1.34GB read
+Requests/sec: 317385.05
+Transfer/sec:     45.70MB
+
+```
+
+@JesHansen submitted a pull request to add dotnet core and here is the result.
+ 
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:5000 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:5000
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.93ms    2.51ms  45.13ms   85.78%
+    Req/Sec   122.23k    10.92k  150.99k    72.25%
+  Latency Distribution
+     50%    2.35ms
+     75%    3.77ms
+     90%    5.51ms
+     99%   12.84ms
+  14599887 requests in 30.03s, 1.67GB read
+Requests/sec: 486216.93
+Transfer/sec:     57.03MB
+
+```
+
+@adrienlauer submitted a pull request to add seedstack-filter and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.41ms    3.99ms  68.47ms   88.16%
+    Req/Sec    86.43k    10.63k  150.72k    74.27%
+  Latency Distribution
+     50%    3.44ms
+     75%    5.71ms
+     90%    8.79ms
+     99%   18.81ms
+  10336608 requests in 30.10s, 1.51GB read
+Requests/sec: 343416.33
+Transfer/sec:     51.42MB
+```
+
+@adrienlauer submitted a pull request to add seedstack-jersey2 and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    26.88ms   20.07ms 230.49ms   74.47%
+    Req/Sec    13.12k     3.14k   25.28k    75.38%
+  Latency Distribution
+     50%   22.35ms
+     75%   36.26ms
+     90%   53.21ms
+     99%   93.83ms
+  1574128 requests in 30.09s, 357.29MB read
+Requests/sec:  52310.11
+Transfer/sec:     11.87MB
+
+```
+
+@jknack submitted a pull request with upgraded Jooby and here is the result. 
+
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.95ms    3.47ms  74.38ms   87.31%
+    Req/Sec    91.09k     9.20k  146.91k    75.65%
+  Latency Distribution
+     50%    3.18ms
+     75%    5.12ms
+     90%    7.52ms
+     99%   16.20ms
+  10896144 requests in 30.10s, 1.41GB read
+Requests/sec: 362018.07
+Transfer/sec:     47.99MB
+
+```
+
+@rpinaa submitted a pull request to add node-loopback and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    34.42ms   22.01ms 535.98ms   68.62%
+    Req/Sec     8.10k   578.42    11.03k    79.28%
+  Latency Distribution
+     50%   40.16ms
+     75%   59.88ms
+     90%    0.00us
+     99%    0.00us
+  965939 requests in 30.10s, 346.37MB read
+Requests/sec:  32091.95
+Transfer/sec:     11.51MB
+
+```
+
+@rodrigomata submitted a pull request to add go-httprouter and here is the result.
+
+```
+steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 30s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.12ms   14.25ms 171.89ms   87.11%
+    Req/Sec    43.19k     5.18k   61.08k    72.83%
+  Latency Distribution
+     50%    9.58ms
+     75%   18.79ms
+     90%   32.19ms
+     99%   67.61ms
+  5164540 requests in 30.05s, 635.36MB read
+Requests/sec: 171852.31
+Transfer/sec:     21.14MB
 
 ```

@@ -1,0 +1,99 @@
+baseurl = "https://networknt.github.io/microservices-framework-benchmark/"
+languageCode = "en-us"
+title = "Microservices Framework Benchmark"
+theme = "hugo-material-docs"
+metadataformat = "yaml"
+canonifyurls = true
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[params]
+	# General information
+	author = "Steve Hu"
+	description = "Microservices Framework Benchmark Docs"
+	copyright = "Released under the MIT license"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/networknt/microservices-framework-benchmark"
+
+	version = "1.0.0"
+	logo = "images/logo.png"
+	favicon = ""
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+    	primary = "red"
+    	accent  = "teal"
+
+    [params.font]
+    	text = "Ubuntu"
+    	code = "Ubuntu Mono"
+
+
+[social]
+	twitter = ""
+	github  = "stevehu"
+	email   = "stevehu@gmail.com"
+
+
+[[menu.main]]
+	name   = "Introduction"
+	url    = "/index.html"
+	weight = 5
+
+[[menu.main]]
+	name   = "Specification"
+	url    = "specification/"
+	weight = 10
+
+
+[[menu.main]]
+	name   = "Environment"
+	url    = "environment/"
+	weight = 20
+
+[[menu.main]]
+	name   = "Implementation"
+	url    = "implementation/"
+	weight = 30
+
+[[menu.main]]
+	name   = "Benchmark"
+	url    = "Benchmark/"
+	weight = 40
+
+[[menu.main]]
+	name   = "Tool"
+	url    = "tool/"
+	weight = 50
+
+[[menu.main]]
+	name   = "Issues & Help"
+	url    = "https://github.com/networknt/microservices-framework-benchmark/issues"
+	weight = 60
+
+[[menu.main]]
+	name   = "Roadmap"
+	url    = "roadmap/"
+	weight = 70
+
+[[menu.main]]
+	name   = "License"
+	url    = "https://www.apache.org/licenses/LICENSE-2.0"
+	weight = 80
+
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
