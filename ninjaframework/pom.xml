@@ -15,8 +15,8 @@
     <url>http://www.ninjaframework.org</url>
 
     <properties>
-        <ninja.version>6.0.0-beta1</ninja.version>
-        <jetty.version>9.3.11.v20160721</jetty.version>
+        <ninja.version>6.2.0</ninja.version>
+        <jetty.version>9.4.7.v20170914</jetty.version>
     </properties>
 
     <build>

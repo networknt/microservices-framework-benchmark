@@ -6,7 +6,7 @@
 
   <groupId>microservice.benchmark</groupId>
   <artifactId>act-benchmark</artifactId>
-  <version>1.0.0</version>
+  <version>1.4.0</version>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -17,7 +17,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <act.version>1.0.7-SNAPSHOT</act.version>
+    <act.version>1.4.14</act.version>
     <app.entry>benchmark.ActBenchmark</app.entry>
   </properties>
 

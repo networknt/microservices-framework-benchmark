@@ -1,6 +1,6 @@
 Running 
 
-Download play-1.4.x from https://downloads.typesafe.com/play/1.4.4/play-1.4.4.zip
+Download play-1.5.0 from https://downloads.typesafe.com/play/1.5.0/play-1.5.0.zip
 
 Unzip the package and add the dir into `$PATH` environment variable
 
