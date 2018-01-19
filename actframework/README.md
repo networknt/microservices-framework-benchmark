@@ -1,10 +1,10 @@
 # [ActFramework](http://actframework.org) Test Bed
 
-## Listening port
+## 1. Listening port
 
 The test application is listening on port `8080`
 
-## About ActFramework
+## 2. About ActFramework
 
 ActFramework is a fullstack Java web application framework with rich set of features:
 
@@ -20,11 +20,11 @@ ActFramework is a fullstack Java web application framework with rich set of feat
 * Powerful view architecture with multiple rendering engine support
 * ... a lot more can be checked on [http://actframework.org](http://actframework.org)
 
-### ActFramework version
+### 2.1 ActFramework version
 
-The application is created on ActFramework `1.4.14`
+The application is created on ActFramework `1.6.4`
 
-## Start the application
+## 3. Start the application
 
 ```
 ./run.sh
@@ -34,54 +34,117 @@ The application is created on ActFramework `1.4.14`
 And you should see something like this:
 
 ```
-   / \     ___ | |_  | __ )   ___  _ __    ___ | |__   _ __ ___    __ _  _ __ | | __
-  / _ \   / __|| __| |  _ \  / _ \| '_ \  / __|| '_ \ | '_ ` _ \  / _` || '__|| |/ /
- / ___ \ | (__ | |_  | |_) ||  __/| | | || (__ | | | || | | | | || (_| || |   |   < 
-/_/   \_\ \___| \__| |____/  \___||_| |_| \___||_| |_||_| |_| |_| \__,_||_|   |_|\_\
-                                                                                    
-                                                 powered by ActFramework r1.4.14-0239
+        _  ___       _    _         _                    _      
+  /\   /    |   __  |_)  |_  |\ |  /   |_|  |\/|   /\   |_)  |/ 
+ /--\  \_   |       |_)  |_  | \|  \_  | |  |  |  /--\  | \  |\ 
+                                                                
+                             powered by ActFramework r1.6.4-da20
 
- version: unknown
-scan pkg: benchmark
-base dir: /home/luog/tmp/p/microservices-framework-benchmark/actframework/target/dist
-     pid: 10748
+ version: r1.6.0
+scan pkg: benchmark.act
+base dir: /home/luog/p/greenlaw110/microservices-framework-benchmark/actframework/target/dist
+     pid: 12458
  profile: prod
     mode: PROD
 
-     zen: Errors should never pass silently 
-          Unless explicitly silenced.
+     zen: If the implementation is easy to explain, it may be a good idea.
 
-13:56:38.217 [main] INFO  a.Act - loading application(s) ...
-13:56:38.221 [main] INFO  a.a.App - App starting ....
-13:56:38.291 [main] WARN  a.c.AppConfig - Application secret key not set! You are in the dangerous zone!!!
-13:56:38.329 [main] WARN  a.a.DbServiceManager - DB service not initialized: No DB plugin found
-13:56:38.591 [main] WARN  a.m.MailerConfig - smtp host configuration not found, will use mock smtp to send email
-13:56:38.591 [main] WARN  a.c.AppConfig - host is not configured. Use localhost as hostname
-13:56:38.723 [main] INFO  a.a.App - App[Act Benchmark] loaded in 502ms
-13:56:38.739 [main] INFO  o.xnio - XNIO version 3.3.8.Final
-13:56:38.752 [main] INFO  o.x.nio - XNIO NIO Implementation Version 3.3.8.Final
-13:56:38.894 [main] INFO  a.Act - network client hooked on port: 8080
-13:56:38.895 [main] INFO  a.Act - it takes 2331ms to start the app
+2018-01-20 06:26:10,727 INFO  a.Act@[main] - loading application(s) ...
+2018-01-20 06:26:10,731 INFO  a.a.App@[main] - App starting ....
+2018-01-20 06:26:10,834 WARN  a.h.b.ResourceGetter@[main] - URL base not exists: META-INF/resources/webjars
+2018-01-20 06:26:10,844 WARN  a.a.DbServiceManager@[main] - DB service not initialized: No DB plugin found
+2018-01-20 06:26:11,299 INFO  a.a.App@[main] - App[act-benchmark] loaded in 568ms
+2018-01-20 06:26:11,317 INFO  o.xnio@[main] - XNIO version 3.3.8.Final
+2018-01-20 06:26:11,331 INFO  o.x.nio@[main] - XNIO NIO Implementation Version 3.3.8.Final
+2018-01-20 06:26:11,432 INFO  a.Act@[main] - network client hooked on port: 8080
+2018-01-20 06:26:11,433 INFO  a.Act@[main] - app is ready at: http://192.168.1.8:8080
+2018-01-20 06:26:11,433 INFO  a.Act@[main] - it takes 2160ms to start the app
 ```
 
-## Application endpoints
+## 4. Application endpoints
 
-### Default: `/`
+### 4.1 Default: `/`
 
-It shall respond with `Hello World!` response with `content-type` set to `text/plain`
+It shall respond with `Hello World!` response with `content-type` set to `text/plain`.
 
-#### Benchmark command:
+This is a nonblock service without session processing. This kind of service endpoint is not a usually application
+service. It shows the high water mark of ActFramework's performance on dealing with simplest scenario. 
 
-```
-wrk -t4 -c128 -d15s http://localhost:8080 -s pipeline.lua --latency -- / 16
-```
+#### 4.1.1 Implementation
 
-### JSON Serialization: `/json`
-
-It shall respond with `{"result": "Hello World!"}` response with `content-type` set to `application/json`
-
-#### Benchmark command:
+This endpoint is implemented through an entry in `resources/routes.conf` file:
 
 ```
-wrk -t4 -c128 -d15s http://localhost:8080 -s pipeline.lua --latency -- /json 16
+GET / echo: Hello World!
 ```
+
+### 4.2 `/txt`
+
+It shall respond with `Hello World!` response with `content-type` set to `text/html`.
+
+This is a blocking service with session processing. This endpoint represent how a normal service is 
+implemented in ActFramework. 
+
+#### 4.2.1 Implementation
+
+```
+    @GetAction("/txt")
+    public String text() {
+        return "Hello World!";
+    }
+```
+
+## 5. Local test result
+
+Testing the above endpoints on my local machine generates the following results
+
+| Endpoint | Block I/O | Session processing | Throughput   |
+| -------- | :-------: | :----------------: | -----------: |
+| /      | nonblock  | no                 | 1430632.33/s |
+| /txt   | block     | yes                |  244022.40/s |
+
+Test logs:
+
+For default `/` endpoint:
+
+```
+luog@luog-Satellite-P50-A:~/p/greenlaw110/microservices-framework-benchmark$ wrk -t4 -c128 -d15s http://localhost:8080 -s pipeline.lua --latency -- / 16
+Running 15s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.67ms    2.21ms  35.46ms   89.73%
+    Req/Sec   360.09k    36.97k  475.68k    70.50%
+  Latency Distribution
+     50%    0.93ms
+     75%    1.95ms
+     90%    3.95ms
+     99%   11.28ms
+  21581744 requests in 15.09s, 2.03GB read
+Requests/sec: 1430632.33
+Transfer/sec:    137.80MB
+```
+
+For `/txt` endpoint:
+
+```
+luog@luog-Satellite-P50-A:~/p/greenlaw110/microservices-framework-benchmark$ wrk -t4 -c128 -d15s http://localhost:8080 -s pipeline.lua --latency -- /txt 16
+Running 15s test @ http://localhost:8080
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.78ms    5.54ms  73.09ms   76.03%
+    Req/Sec    64.53k     4.43k   74.88k    70.17%
+  Latency Distribution
+     50%    5.30ms
+     75%    9.41ms
+     90%   14.26ms
+     99%   25.18ms
+  3853264 requests in 15.01s, 0.89GB read
+Requests/sec: 256795.14
+Transfer/sec:     60.49MB
+```
+
+#### 5.1 The testbed spec
+
+* CPU: Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
+* RAM: 16GB
+* Storage: 200G SSD
