@@ -6,8 +6,9 @@
   <!-- Send debug messages to System.out -->
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+    <withJansi>true</withJansi>
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+      <pattern>%date %highlight(%-5level) %cyan(%logger{5}@[%-4.30thread]) - %msg%n</pattern>
     </encoder>
   </appender>
 
@@ -51,14 +52,27 @@
     <appender-ref ref="STDOUT" />
   </logger>
 
+  <logger name="act.db" level="TRACE" additivity="false">
+    <appender-ref ref="FILE" />
+  </logger>
+
+  <logger name="act.ws" level="DEBUG" additivity="false">
+    <appender-ref ref="FILE"/>
+    <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <logger name="act.mail" level="NONE" additivity="false">
+    <appender-ref ref="FILE"/>
+  </logger>
+
   <logger name="metric.act" level="TRACE">
     <appender-ref ref="METRIC_FILE" />
   </logger>
 
-  <logger name="benchmark.helloworld.PersonController" level="DEBUG" additivity="false">
+  <logger name="benchmark.act" level="NONE" additivity="false">
+    <appender-ref ref="FILE" />
     <appender-ref ref="STDOUT" />
   </logger>
-
 
   <!-- By default, the level of the root level is set to DEBUG -->
   <root level="INFO">

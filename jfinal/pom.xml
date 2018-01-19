@@ -26,8 +26,8 @@
     </dependency>
       <dependency>
     	<groupId>com.jfinal</groupId>
-    	<artifactId>jfinal</artifactId>
-    	<version>3.2</version>
+    	<artifactId>jfinal-java8</artifactId>
+    	<version>3.3</version>
     </dependency>
     <dependency>
     	<groupId>log4j</groupId>
@@ -42,7 +42,7 @@
 	<dependency>
 		<groupId>com.alibaba</groupId>
 		<artifactId>druid</artifactId>
-		<version>1.0.5</version>
+		<version>1.1.6</version>
 	</dependency>
     <dependency>
     	<groupId>com.jfinal</groupId>
