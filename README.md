@@ -123,7 +123,7 @@ Requests/sec:  44260.61
 Transfer/sec:      6.42MB
 ```
 
-Basically, light-java is 44 times faster then sprint-boot with tomcat embedded just
+Basically, light-4j is 44 times faster than spring-boot with tomcat embedded just
 for the raw performance to serve Hello World! 
 
 In order to have a closer comparison, I have created another project spring-boot-undertow with embedded
@@ -243,7 +243,7 @@ Transfer/sec:     17.86MB
 
 ```
 
-Add Spark test case and here is the result. It is much better then most frameworks with servlet containers.
+Add Spark test case and here is the result. It is much better than most frameworks with servlet containers.
 
 ```
 steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:4567 -s pipeline.lua --latency -- / 16
