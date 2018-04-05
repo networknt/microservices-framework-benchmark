@@ -24,7 +24,7 @@
         <version.antlr4>4.5.3</version.antlr4>
         <version.commons-lang>2.6</version.commons-lang>
         <version.commons.io>2.5</version.commons.io>
-        <version.commons.codec>1.10</version.commons.codec>
+        <version.commons.codec>1.11</version.commons.codec>
         <version.encoder>1.2</version.encoder>
         <version.metrics>3.1.2</version.metrics>
         <version.logback>1.1.7</version.logback>
