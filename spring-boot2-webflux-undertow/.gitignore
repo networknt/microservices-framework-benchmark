@@ -1,0 +1,21 @@
+target/
+bower_components/
+node_modules/
+dist/
+.idea/¬¬¬∑
+.tmp/
+.settings
+.metadata/
+*.iml
+*.log
+*.tmp
+*.zip
+*.bak
+dependency-reduced-pom.xml
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.DS_Store
+
+.idea
