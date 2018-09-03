@@ -6,7 +6,7 @@
 | Framework    | Language   | Max Throughput | Avg Latency | Transfer | 
 | ------------ | ---------: | -------------: | ----------: | -------: |
 | Go FastHttp  | Go         | 1,396,685.83     | 99.98ms     | 167.83MB |
-| Light Java   | Java       | 1,344,512.65     | 2.36ms      | 169.25MB |
+| Light-4j     | Java       | 1,344,512.65     | 2.36ms      | 169.25MB |
 | ActFramework | Java       | 945,429.13      | 2.22ms      | 136.15MB |
 | Go Iris      | Go         | 828,035.66      | 5.77ms      | 112.92MB |
 | Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
