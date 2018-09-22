@@ -1,0 +1,5 @@
+# Singleton service factory configuration/IoC injection
+singletons:
+# HandlerProvider implementation
+- com.networknt.handler.HandlerProvider:
+  - Example

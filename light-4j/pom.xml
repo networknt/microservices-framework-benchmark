@@ -1,117 +1,47 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>5</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-light-java</artifactId>
+    <groupId>com.networknt</groupId>
+    <artifactId>plaintext</artifactId>
     <packaging>jar</packaging>
-    <name>swagger-light-java</name>
+    <name>plaintext</name>
     <version>1.0.0</version>
-    <prerequisites>
-        <maven>2.2.0</maven>
-    </prerequisites>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.framework>0.1.7</version.framework>
-        <version.jackson>2.8.2</version.jackson>
-        <version.slf4j>1.7.21</version.slf4j>
-        <version.jose4j>0.6.3</version.jose4j>
-        <version.antlr4>4.5.3</version.antlr4>
-        <version.commons-lang>2.6</version.commons-lang>
-        <version.commons.io>2.5</version.commons.io>
-        <version.commons.codec>1.11</version.commons.codec>
-        <version.encoder>1.2</version.encoder>
-        <version.metrics>3.1.2</version.metrics>
-        <version.logback>1.1.7</version.logback>
+        <version.light-4j>1.5.19</version.light-4j>
+        <version.jackson>2.9.5</version.jackson>
+        <version.slf4j>1.7.25</version.slf4j>
+        <version.logback>1.2.3</version.logback>
         <version.junit>4.12</version.junit>
-        <version.mockito>2.1.0-beta.124</version.mockito>
-        <version.undertow>1.4.23.Final</version.undertow>
-        <version.jsonpath>2.2.0</version.jsonpath>
-        <version.httpclient>4.5.2</version.httpclient>
-        <version.httpasyncclient>4.1.2</version.httpasyncclient>
-        <version.swagger>1.5.10</version.swagger>
+        <version.undertow>2.0.11.Final</version.undertow>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.networknt</groupId>
             <artifactId>config</artifactId>
-            <version>${version.framework}</version>
+            <version>${version.light-4j}</version>
         </dependency>
         <dependency>
             <groupId>com.networknt</groupId>
             <artifactId>utility</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>security</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>client</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>audit</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>info</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>validator</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>status</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>exception</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>body</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>mask</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>swagger</artifactId>
-            <version>${version.framework}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.networknt</groupId>
-            <artifactId>metrics</artifactId>
-            <version>${version.framework}</version>
+            <version>${version.light-4j}</version>
         </dependency>
         <dependency>
             <groupId>com.networknt</groupId>
             <artifactId>handler</artifactId>
-            <version>${version.framework}</version>
+            <version>${version.light-4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>service</artifactId>
+            <version>${version.light-4j}</version>
         </dependency>
         <dependency>
             <groupId>com.networknt</groupId>
             <artifactId>server</artifactId>
-            <version>${version.framework}</version>
+            <version>${version.light-4j}</version>
         </dependency>
 
         <dependency>
@@ -125,11 +55,6 @@
             <version>${version.jackson}</version>
         </dependency>
         <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${version.jsonpath}</version>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${version.logback}</version>
@@ -139,11 +64,6 @@
             <artifactId>undertow-core</artifactId>
             <version>${version.undertow}</version>
         </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>${version.swagger-parser}</version>
-        </dependency>
 
         <!-- Test Dependencies -->
         <dependency>
@@ -152,13 +72,6 @@
             <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${version.httpclient}</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
 
