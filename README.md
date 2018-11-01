@@ -12,21 +12,21 @@
 | Vertx        | Java       | 803,311.31     | 2.37ms       | 98.06MB  |
 | Node-uws     | Node/C++   | 589,924.44      |  7.22ms     | 28.69MB  |
 | Dotnet       | .Net       | 486,216.93      |  2.93ms     | 57.03MB  |
-| Jooby/Undertow | Java     | 362018.07      |  3.95ms     | 47.99MB  |
-| SeedStack-Filter | Java   | 343416.33       | 4.41ms      | 51.42MB  |
+| Jooby/Undertow | Java     | 362,018.07     |  3.95ms     | 47.99MB  |
+| SeedStack-Filter | Java   | 343,416.33      | 4.41ms      | 51.42MB  |
 | Spring Boot Reactor | Java | 243,240.17     | 7.44ms      | 17.86MB  |
 | Pippo-Undertow | Java     | 216,254.56     | 9.80ms     | 31.35MB    |
 | Spark        | Java       | 194,553.83      |  13.85ms    | 32.47MB  |
 | Pippo-Jetty  | Java       | 178,055.45      |  15.66ms    | 26.83MB  |
 | Play-Java    | Java       | 177,202.75      |  12.15ms    | 21.80MB  |
-| Go HttpRouter | Go        | 171852.31       | 14.12ms     | 21.14MB  |
+| Go HttpRouter | Go        | 171,852.31      | 14.12ms     | 21.14MB  |
 | Go Http      | Go         | 170,313.02      |  15.01ms    | 20.95MB  |
 | JFinal       | Java       | 139,467.87      |  11.89ms    | 29.79MB  |
 | Akka-Http    | Java       | 132,157.96  | 12.21ms         | 19.54MB  |
 | RatPack      | Java       | 124,700.70     | 13.45ms    | 10.82MB    |
 | Pippo-Tomcat   | Java     | 103,948.18     | 23.50ms    | 15.29MB    |
 | Bootique + Jetty/Jersey | Java | 65,072.20 | 39.08ms | 11.17MB       |
-| SeedStack-Jersey2 | Java  | 52310.11       |  26.88ms     | 11.87MB  |
+| SeedStack-Jersey2 | Java  | 52,310.11      |  26.88ms     | 11.87MB  |
 | Baseio         | Java    | 50,361.98      | 22.20ms    | 6.39MB   |
 | NinjaFramework | Java    | 47,956.43      | 55.76ms    | 13.67MB |
 | Play 1         | Java    | 44,491.87      | 10.73ms    | 18.75MB  |
@@ -34,7 +34,7 @@
 | Nodejs Express | Node     | 42,443.34     | 22.30ms     | 9.31MB   |
 | Dropwizard     | Java     | 33,819.90     | 98.78ms     | 3.23MB  |
 | Spring Boot Tomcat | Java | 33,086.22 | 82.93ms     | 3.98MB   |
-| Node-Loopback  | Node     | 32091.95  | 34.42ms     | 11.51MB  |
+| Node-Loopback  | Node     | 32,091.95 | 34.42ms     | 11.51MB  |
 | Payra Micro        | Java | 24,768.69 | 118.86ms    | 3.50MB   |
 | WildFly Swarm     | Java | 21,541.07  | 59.77ms     | 2.83MB   |
 
