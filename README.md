@@ -46,21 +46,20 @@ at microservices-framework-benchmark/pipeline.lua.
 Here is the light-java server performance with the same command line with other frameworks.
 
 ```
-steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.36ms    3.55ms  53.35ms   89.03%
-    Req/Sec   338.18k    49.76k  717.09k    76.64%
+    Latency   774.30us    1.77ms  40.31ms   91.51%
+    Req/Sec     0.93M    81.46k    1.06M    87.83%
   Latency Distribution
-     50%    1.05ms
-     75%    2.48ms
-     90%    6.35ms
-     99%   17.28ms
-  40436304 requests in 30.08s, 4.97GB read
-Requests/sec: 1344512.65
-Transfer/sec:    169.25MB
-
+     50%  286.00us
+     75%  529.00us
+     90%    1.92ms
+     99%    0.00us
+  110603088 requests in 30.01s, 12.88GB read
+Requests/sec: 3685234.33
+Transfer/sec:    439.31MB
 ```
 
 Here is another test with for light-java to push more requests but some other frameworks get server errors.
@@ -624,27 +623,26 @@ Transfer/sec:     28.69MB
 @seanjburns submitted a pull request to add vertx and here is the result.
 
 ```
-steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.37ms    3.24ms  79.48ms   90.49%
-    Req/Sec   201.91k    19.79k  269.09k    78.08%
+    Latency     1.34ms    5.61ms 170.00ms   94.85%
+    Req/Sec     0.95M   133.67k    1.23M    92.76%
   Latency Distribution
-     50%    1.41ms
-     75%    2.42ms
-     90%    5.41ms
-     99%   16.08ms
-  24114240 requests in 30.02s, 2.87GB read
-Requests/sec: 803311.31
-Transfer/sec:     98.06MB
-
+     50%  278.00us
+     75%  517.00us
+     90%    3.23ms
+     99%  126.69ms
+  113247792 requests in 30.10s, 9.70GB read
+Requests/sec: 3762376.24
+Transfer/sec:    330.10MB
 ```
 
 @kevin-better submitted a pull request to add baseio and here is the result.
 
 ```
-steve@joy:~/tool/wrk$ wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
+wrk -t4 -c128 -d30s http://localhost:8080 -s pipeline.lua --latency -- / 16
 Running 30s test @ http://localhost:8080
   4 threads and 128 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
