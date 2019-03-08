@@ -1,6 +1,10 @@
-[Developer Chat](https://gitter.im/networknt/microservices-framework-benchmark) |
+[Stack Overflow](https://stackoverflow.com/questions/tagged/light-4j) |
+[Google Group](https://groups.google.com/forum/#!forum/light-4j) |
+[Gitter Chat](https://gitter.im/networknt/microservices-framework-benchmark) |
+[Subreddit](https://www.reddit.com/r/lightapi/) |
+[Youtube Channel](https://www.youtube.com/channel/UCHCRMWJVXw8iB7zKxF55Byw) |
 [Documentation](https://networknt.github.io/microservices-framework-benchmark) |
-[Contribution Guide](CONTRIBUTING.md) |
+[Contribution Guide](https://doc.networknt.com/contribute/) |
 
 
 | Framework    | Language   | Max Throughput | Avg Latency | Transfer | 
