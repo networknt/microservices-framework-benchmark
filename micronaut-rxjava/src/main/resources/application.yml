@@ -1,3 +1,6 @@
 micronaut:
   application:
     name: micronaut-rxjava
+  ssl:
+    enabled: true
+    buildSelfSigned: true

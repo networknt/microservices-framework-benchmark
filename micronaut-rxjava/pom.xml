@@ -54,6 +54,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <scope>compile</scope>
