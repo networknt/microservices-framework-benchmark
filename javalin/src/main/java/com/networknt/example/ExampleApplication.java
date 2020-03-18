@@ -1,6 +1,7 @@
 package com.networknt.example;
 
 import io.javalin.Javalin;
+import io.javalin.http.Context;
 import org.eclipse.jetty.alpn.server.ALPNServerConnectionFactory;
 import org.eclipse.jetty.http2.HTTP2Cipher;
 import org.eclipse.jetty.http2.server.HTTP2ServerConnectionFactory;
@@ -16,9 +17,14 @@ public class ExampleApplication {
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
+            // Manual Jetty configuration required for SSL/TLS/HTTP2
             config.server(ExampleApplication::createServer);
         }).start();
-        app.get("/", ctx -> ctx.result("Hello world!"));
+        app.get("/", ExampleApplication::helloWorld);
+    }
+
+    public static void helloWorld(Context ctx) {
+        ctx.result("Hello world!");
     }
 
     private static Server createServer() {
@@ -29,24 +35,24 @@ public class ExampleApplication {
         connector.setPort(8080);
         server.addConnector(connector);
 
-        // TLS + HTTP2
-        HttpConfiguration httpConfig = new HttpConfiguration();
-        httpConfig.setSendServerVersion(false);
-        httpConfig.setSecureScheme("https");
-        httpConfig.setSecurePort(8443);
+        // HTTPS
+        ServerConnector sslConnector = new ServerConnector(server, getSslContextFactory());
+        sslConnector.setPort(8443);
+        server.addConnector(sslConnector);
 
-        SslContextFactory sslContextFactory = new SslContextFactory.Server();
-        sslContextFactory.setKeyStorePath(ExampleApplication.class.getResource("/server.keystore").toExternalForm());
-        sslContextFactory.setKeyStorePassword("password");
+
+        // HTTP/2
+        HttpConfiguration httpsConfig = createHttpsConfig();
+
+        SslContextFactory sslContextFactory = getSslContextFactory();
         sslContextFactory.setCipherComparator(HTTP2Cipher.COMPARATOR);
         sslContextFactory.setProvider("Conscrypt");
 
-        HttpConfiguration httpsConfig = new HttpConfiguration(httpConfig);
-        httpsConfig.addCustomizer(new SecureRequestCustomizer());
+        HttpConnectionFactory httpConnectionFactory = new HttpConnectionFactory(httpsConfig);
 
         HTTP2ServerConnectionFactory h2 = new HTTP2ServerConnectionFactory(httpsConfig);
         ALPNServerConnectionFactory alpn = new ALPNServerConnectionFactory();
-        alpn.setDefaultProtocol("h2");
+        alpn.setDefaultProtocol(httpConnectionFactory.getProtocol());
 
         SslConnectionFactory ssl = new SslConnectionFactory(sslContextFactory, alpn.getProtocol());
 
@@ -55,11 +61,28 @@ public class ExampleApplication {
                 ssl,
                 alpn,
                 h2,
-                new HttpConnectionFactory(httpsConfig)
+                httpConnectionFactory
         );
-        http2Connector.setPort(8443);
+        http2Connector.setPort(9443);
         server.addConnector(http2Connector);
 
         return server;
+    }
+
+    private static HttpConfiguration createHttpsConfig() {
+        HttpConfiguration httpConfig = new HttpConfiguration();
+        httpConfig.setSendXPoweredBy(false);
+        httpConfig.setSendServerVersion(false);
+        httpConfig.setSecureScheme("https");
+        httpConfig.addCustomizer(new SecureRequestCustomizer());
+        return httpConfig;
+    }
+
+    private static SslContextFactory getSslContextFactory() {
+        SslContextFactory sslContextFactory = new SslContextFactory.Server();
+        sslContextFactory.setKeyStorePath(ExampleApplication.class.getResource("/server.keystore").toExternalForm());
+        sslContextFactory.setKeyStorePassword("password");
+        sslContextFactory.setUseCipherSuitesOrder(true);
+        return sslContextFactory;
     }
 }

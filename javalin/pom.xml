@@ -20,10 +20,11 @@
             <artifactId>javalin</artifactId>
             <version>3.7.0</version>
         </dependency>
+
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.28</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
 
         <dependency>
@@ -31,11 +32,19 @@
             <artifactId>http2-server</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-alpn-conscrypt-server</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.conscrypt</groupId>
+            <artifactId>conscrypt-openjdk-uber</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -43,8 +52,9 @@
         <finalName>javalin-3</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -53,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.2</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -77,7 +87,8 @@
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
                                         <Main-Class>${application.class}</Main-Class>
                                     </manifestEntries>
@@ -86,7 +97,8 @@
                                 <!--
                                     Jar file would not return HTTP responses without this line after the excludes were added
                                 -->
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
