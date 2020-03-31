@@ -14,7 +14,7 @@
         <version.slf4j>1.7.25</version.slf4j>
         <version.logback>1.2.3</version.logback>
         <version.junit>4.12</version.junit>
-        <version.undertow>2.0.30.Final</version.undertow>
+        <version.undertow>2.0.29.Final</version.undertow>
     </properties>
 
     <dependencies>
