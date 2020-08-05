@@ -10,7 +10,7 @@
     <properties>
         <vertx.version>3.4.1</vertx.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <jackson.version>2.9.4</jackson.version>
+        <jackson.version>2.11.2</jackson.version>
     </properties>
     <dependencies>
         <dependency>
