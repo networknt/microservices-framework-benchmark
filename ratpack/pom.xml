@@ -15,7 +15,7 @@
         <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-core</artifactId>
-            <version>1.7.6</version>
+            <version>1.9.0</version>
         </dependency>
     </dependencies>
 
