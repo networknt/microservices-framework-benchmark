@@ -10,7 +10,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.light-4j>2.1.2-SNAPSHOT</version.light-4j>
-        <version.jackson>2.12.1</version.jackson>
+        <version.jackson>2.12.6.1</version.jackson>
         <version.slf4j>1.7.32</version.slf4j>
         <version.logback>1.2.7</version.logback>
         <version.junit>4.13.1</version.junit>
