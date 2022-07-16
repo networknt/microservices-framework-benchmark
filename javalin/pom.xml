@@ -9,7 +9,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <jettyVersion>9.4.27.v20200227</jettyVersion>
+        <jettyVersion>9.4.48.v20220622</jettyVersion>
 
         <application.class>com.networknt.example.ExampleApplication</application.class>
     </properties>
