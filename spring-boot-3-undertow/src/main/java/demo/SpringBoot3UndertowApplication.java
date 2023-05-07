@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class SpringBoot3TomcatApplication {
+public class SpringBoot3UndertowApplication {
     @RequestMapping("/")
     String home() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBoot3TomcatApplication.class, args);
+        SpringApplication.run(SpringBoot3UndertowApplication.class, args);
     }
 
 }
