@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.undertow:undertow-core:2.3.5.Final'
+    implementation 'io.undertow:undertow-servlet:2.3.5.Final'
+    implementation 'io.undertow:undertow-websockets-jsr:2.3.5.Final'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
