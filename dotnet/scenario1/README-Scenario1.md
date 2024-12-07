@@ -6,21 +6,23 @@ This is a simple implementation scenario 1 of the spec from https://networknt.gi
 In this sample we again look at using .NET Minimal Apis.
 
 
-Restore dependencies:
+Build the app:
 ------
-Getting the app ready to run should be as simple as opening a console in the apiA folder and executing
+Getting the app ready to run should be as simple as opening a console in the project folder and executing
 ```
-dotnet restore
+dotnet publish
 ```
-
+This will build the app for your machine architecture, e.g. on Windows this gives
+```
+> dotnet publish
+  scenario1 succeeded (14,2s) → bin\Release\net9.0\win-x64\publish\
+```
 Run the app:
 ------
-You can now run the app by opening a console in the apiA folder and executing
-```
-dotnet run -c Release
-```
+After the app has been built by running `dotnet publish`, you can run the app by going into the publish folder shown
+above and run the `scenario1` binary.
 
-You can then call the app using a browser, Postman or another tool at http://localhost:7000/text for http 
+You can then call the app using a browser, Postman or another tool at http://localhost:7001/text for http 
 and https://localhost:7441/tls/text for a https request.
 
 The certificate is, of course, a self-signed cert.
