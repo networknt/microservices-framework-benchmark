@@ -1,9 +1,0 @@
-obj/
-bin/
-*.nuget.g.props
-*.nuget.g.targets
-*.suo
-*.csproj.user
-launchSettings.json
-*.bak
-
